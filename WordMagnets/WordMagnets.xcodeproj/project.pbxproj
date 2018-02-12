@@ -1,0 +1,445 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 48;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		3B7CEC5A2030F29700FCC9DF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B7CEC592030F29700FCC9DF /* AppDelegate.swift */; };
+		3B7CEC5C2030F29800FCC9DF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B7CEC5B2030F29800FCC9DF /* ViewController.swift */; };
+		3B7CEC5F2030F29800FCC9DF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3B7CEC5D2030F29800FCC9DF /* Main.storyboard */; };
+		3B7CEC612030F29800FCC9DF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3B7CEC602030F29800FCC9DF /* Assets.xcassets */; };
+		3B7CEC642030F29800FCC9DF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3B7CEC622030F29800FCC9DF /* LaunchScreen.storyboard */; };
+		3B7CEC6F2030F29800FCC9DF /* WordMagnetsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B7CEC6E2030F29800FCC9DF /* WordMagnetsTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		3B7CEC6B2030F29800FCC9DF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3B7CEC4E2030F29700FCC9DF /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3B7CEC552030F29700FCC9DF;
+			remoteInfo = WordMagnets;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		3B7CEC562030F29700FCC9DF /* WordMagnets.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WordMagnets.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		3B7CEC592030F29700FCC9DF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		3B7CEC5B2030F29800FCC9DF /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		3B7CEC5E2030F29800FCC9DF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		3B7CEC602030F29800FCC9DF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		3B7CEC632030F29800FCC9DF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		3B7CEC652030F29800FCC9DF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3B7CEC6A2030F29800FCC9DF /* WordMagnetsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WordMagnetsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		3B7CEC6E2030F29800FCC9DF /* WordMagnetsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordMagnetsTests.swift; sourceTree = "<group>"; };
+		3B7CEC702030F29800FCC9DF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		3B7CEC532030F29700FCC9DF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3B7CEC672030F29800FCC9DF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		3B7CEC4D2030F29700FCC9DF = {
+			isa = PBXGroup;
+			children = (
+				3B7CEC582030F29700FCC9DF /* WordMagnets */,
+				3B7CEC6D2030F29800FCC9DF /* WordMagnetsTests */,
+				3B7CEC572030F29700FCC9DF /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		3B7CEC572030F29700FCC9DF /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				3B7CEC562030F29700FCC9DF /* WordMagnets.app */,
+				3B7CEC6A2030F29800FCC9DF /* WordMagnetsTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		3B7CEC582030F29700FCC9DF /* WordMagnets */ = {
+			isa = PBXGroup;
+			children = (
+				3B7CEC592030F29700FCC9DF /* AppDelegate.swift */,
+				3B7CEC5B2030F29800FCC9DF /* ViewController.swift */,
+				3B7CEC5D2030F29800FCC9DF /* Main.storyboard */,
+				3B7CEC602030F29800FCC9DF /* Assets.xcassets */,
+				3B7CEC622030F29800FCC9DF /* LaunchScreen.storyboard */,
+				3B7CEC652030F29800FCC9DF /* Info.plist */,
+			);
+			path = WordMagnets;
+			sourceTree = "<group>";
+		};
+		3B7CEC6D2030F29800FCC9DF /* WordMagnetsTests */ = {
+			isa = PBXGroup;
+			children = (
+				3B7CEC6E2030F29800FCC9DF /* WordMagnetsTests.swift */,
+				3B7CEC702030F29800FCC9DF /* Info.plist */,
+			);
+			path = WordMagnetsTests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		3B7CEC552030F29700FCC9DF /* WordMagnets */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3B7CEC732030F29800FCC9DF /* Build configuration list for PBXNativeTarget "WordMagnets" */;
+			buildPhases = (
+				3B7CEC522030F29700FCC9DF /* Sources */,
+				3B7CEC532030F29700FCC9DF /* Frameworks */,
+				3B7CEC542030F29700FCC9DF /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = WordMagnets;
+			productName = WordMagnets;
+			productReference = 3B7CEC562030F29700FCC9DF /* WordMagnets.app */;
+			productType = "com.apple.product-type.application";
+		};
+		3B7CEC692030F29800FCC9DF /* WordMagnetsTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3B7CEC762030F29800FCC9DF /* Build configuration list for PBXNativeTarget "WordMagnetsTests" */;
+			buildPhases = (
+				3B7CEC662030F29800FCC9DF /* Sources */,
+				3B7CEC672030F29800FCC9DF /* Frameworks */,
+				3B7CEC682030F29800FCC9DF /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				3B7CEC6C2030F29800FCC9DF /* PBXTargetDependency */,
+			);
+			name = WordMagnetsTests;
+			productName = WordMagnetsTests;
+			productReference = 3B7CEC6A2030F29800FCC9DF /* WordMagnetsTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		3B7CEC4E2030F29700FCC9DF /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0920;
+				LastUpgradeCheck = 0920;
+				ORGANIZATIONNAME = Balor;
+				TargetAttributes = {
+					3B7CEC552030F29700FCC9DF = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+					};
+					3B7CEC692030F29800FCC9DF = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 3B7CEC552030F29700FCC9DF;
+					};
+				};
+			};
+			buildConfigurationList = 3B7CEC512030F29700FCC9DF /* Build configuration list for PBXProject "WordMagnets" */;
+			compatibilityVersion = "Xcode 8.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 3B7CEC4D2030F29700FCC9DF;
+			productRefGroup = 3B7CEC572030F29700FCC9DF /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				3B7CEC552030F29700FCC9DF /* WordMagnets */,
+				3B7CEC692030F29800FCC9DF /* WordMagnetsTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		3B7CEC542030F29700FCC9DF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3B7CEC642030F29800FCC9DF /* LaunchScreen.storyboard in Resources */,
+				3B7CEC612030F29800FCC9DF /* Assets.xcassets in Resources */,
+				3B7CEC5F2030F29800FCC9DF /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3B7CEC682030F29800FCC9DF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		3B7CEC522030F29700FCC9DF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3B7CEC5C2030F29800FCC9DF /* ViewController.swift in Sources */,
+				3B7CEC5A2030F29700FCC9DF /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3B7CEC662030F29800FCC9DF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3B7CEC6F2030F29800FCC9DF /* WordMagnetsTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		3B7CEC6C2030F29800FCC9DF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 3B7CEC552030F29700FCC9DF /* WordMagnets */;
+			targetProxy = 3B7CEC6B2030F29800FCC9DF /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		3B7CEC5D2030F29800FCC9DF /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3B7CEC5E2030F29800FCC9DF /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		3B7CEC622030F29800FCC9DF /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3B7CEC632030F29800FCC9DF /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		3B7CEC712030F29800FCC9DF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		3B7CEC722030F29800FCC9DF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		3B7CEC742030F29800FCC9DF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = WordMagnets/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.WordMagnets;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		3B7CEC752030F29800FCC9DF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = WordMagnets/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.WordMagnets;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		3B7CEC772030F29800FCC9DF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = WordMagnetsTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.WordMagnetsTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/WordMagnets.app/WordMagnets";
+			};
+			name = Debug;
+		};
+		3B7CEC782030F29800FCC9DF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = WordMagnetsTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.WordMagnetsTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/WordMagnets.app/WordMagnets";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		3B7CEC512030F29700FCC9DF /* Build configuration list for PBXProject "WordMagnets" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3B7CEC712030F29800FCC9DF /* Debug */,
+				3B7CEC722030F29800FCC9DF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3B7CEC732030F29800FCC9DF /* Build configuration list for PBXNativeTarget "WordMagnets" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3B7CEC742030F29800FCC9DF /* Debug */,
+				3B7CEC752030F29800FCC9DF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3B7CEC762030F29800FCC9DF /* Build configuration list for PBXNativeTarget "WordMagnetsTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3B7CEC772030F29800FCC9DF /* Debug */,
+				3B7CEC782030F29800FCC9DF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 3B7CEC4E2030F29700FCC9DF /* Project object */;
+}
