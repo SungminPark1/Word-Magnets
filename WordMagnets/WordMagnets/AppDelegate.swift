@@ -2,8 +2,8 @@
 //  AppDelegate.swift
 //  WordMagnets
 //
-//  Created by Balor on 2/11/18.
-//  Copyright © 2018 Balor. All rights reserved.
+//  Created by Sungmin Park and Ian Oliver on 2/11/18.
+//  Copyright © 2018 Sungmin Park and Ian Oliver. All rights reserved.
 //
 
 import UIKit
