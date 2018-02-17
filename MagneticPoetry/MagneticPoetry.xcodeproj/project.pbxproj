@@ -12,6 +12,7 @@
 		3B90B8CD2038D33D00396508 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3B90B8CB2038D33D00396508 /* Main.storyboard */; };
 		3B90B8CF2038D33D00396508 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3B90B8CE2038D33D00396508 /* Assets.xcassets */; };
 		3B90B8D22038D33D00396508 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3B90B8D02038D33D00396508 /* LaunchScreen.storyboard */; };
+		3B90B8DC2038D67D00396508 /* WordSetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B90B8DB2038D67D00396508 /* WordSetViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		3B90B8CE2038D33D00396508 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3B90B8D12038D33D00396508 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3B90B8D32038D33D00396508 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3B90B8DB2038D67D00396508 /* WordSetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordSetViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,7 +59,6 @@
 				3B90B8DA2038D35300396508 /* View Controller */,
 				3B90B8D92038D34E00396508 /* Modal */,
 				3B90B8C72038D33D00396508 /* AppDelegate.swift */,
-				3B90B8C92038D33D00396508 /* ViewController.swift */,
 				3B90B8CB2038D33D00396508 /* Main.storyboard */,
 				3B90B8CE2038D33D00396508 /* Assets.xcassets */,
 				3B90B8D02038D33D00396508 /* LaunchScreen.storyboard */,
@@ -76,6 +77,8 @@
 		3B90B8DA2038D35300396508 /* View Controller */ = {
 			isa = PBXGroup;
 			children = (
+				3B90B8C92038D33D00396508 /* ViewController.swift */,
+				3B90B8DB2038D67D00396508 /* WordSetViewController.swift */,
 			);
 			path = "View Controller";
 			sourceTree = "<group>";
@@ -152,6 +155,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3B90B8DC2038D67D00396508 /* WordSetViewController.swift in Sources */,
 				3B90B8CA2038D33D00396508 /* ViewController.swift in Sources */,
 				3B90B8C82038D33D00396508 /* AppDelegate.swift in Sources */,
 			);
