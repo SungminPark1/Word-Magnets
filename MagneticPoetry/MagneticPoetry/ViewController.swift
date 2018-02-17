@@ -1,8 +1,8 @@
 //
 //  ViewController.swift
-//  WordMagnets
+//  MagneticPoetry
 //
-//  Created by Sungmin Park and Ian Oliver on 2/11/18.
+//  Created by Balor on 2/17/18.
 //  Copyright © 2018 Sungmin Park and Ian Oliver. All rights reserved.
 //
 
@@ -18,11 +18,11 @@ class ViewController: UIViewController {
     
     func placeWords() {
         let screenWidth = UIScreen.main.bounds.width
-//        let screenHeight = UIScreen.main.bounds.height
-        let xPadding: CGFloat = 15;
-        let yPadding: CGFloat = 50;
-        var xPlacement: CGFloat = 0;
-        var yPlacement: CGFloat = 30;
+        //        let screenHeight = UIScreen.main.bounds.height
+        let xPadding: CGFloat = 15
+        let yPadding: CGFloat = 50
+        var xPlacement: CGFloat = 0
+        var yPlacement: CGFloat = 30
         
         for word in words {
             let l = UILabel()
@@ -46,7 +46,7 @@ class ViewController: UIViewController {
             if (l.frame.width < 40) {
                 l.frame = CGRect(x: x, y: y, width: 40, height: 40)
             } else {
-                l.frame = CGRect(x: x, y: y, width: l.frame.width , height: 40)
+                l.frame = CGRect(x: x, y: y, width: l.frame.width, height: 40)
             }
             
             // update xPlacement

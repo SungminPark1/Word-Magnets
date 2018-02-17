@@ -1,9 +1,9 @@
 //
 //  AppDelegate.swift
-//  WordMagnets
+//  MagneticPoetry
 //
-//  Created by Sungmin Park and Ian Oliver on 2/11/18.
-//  Copyright © 2018 Sungmin Park and Ian Oliver. All rights reserved.
+//  Created by Balor on 2/17/18.
+//  Copyright © 2018 Sungmin Park. All rights reserved.
 //
 
 import UIKit
