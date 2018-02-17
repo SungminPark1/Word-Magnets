@@ -10,6 +10,7 @@ import UIKit
 
 class ViewController: UIViewController {
     var wordSelector = WordSetSelector();
+    var labelArray: Array<UILabel> = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,7 +27,7 @@ class ViewController: UIViewController {
         let xPadding: CGFloat = 15
         let yPadding: CGFloat = 50
         var xPlacement: CGFloat = 0
-        var yPlacement: CGFloat = 30
+        var yPlacement: CGFloat = 40
         
         for word in words {
             let wordLabel = UILabel()
@@ -62,6 +63,7 @@ class ViewController: UIViewController {
             wordLabel.addGestureRecognizer(panGesture)
             
             // add words label to view
+            labelArray.append(wordLabel)
             view.addSubview(wordLabel)
         }
     }
@@ -85,6 +87,11 @@ class ViewController: UIViewController {
             }
             let wordSetIndex = wordSetVC.selectedWordSet
             
+            for label in labelArray {
+                label.removeFromSuperview()
+            }
+            
+            labelArray.removeAll()
             placeWords(words: wordSelector.getWordSet(index: wordSetIndex))
         }
     }
