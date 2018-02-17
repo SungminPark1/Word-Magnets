@@ -10,25 +10,26 @@ import UIKit
 
 class WordSetViewController: UITableViewController {
     var wordSets = ["set1", "set2"]
+    var selectedWordSet: Int?
     
     override func viewDidLoad() {
         super.viewDidLoad()
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
-        print(#function + " called")
+        // print(#function + " called")
         
         return 1
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print(#function + " called with \(wordSets.count) rows")
+        // print(#function + " called with \(wordSets.count) rows")
         
         return wordSets.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        print(#function + " called with indexPath \(indexPath) and color \(wordSets[indexPath.row])")
+        // print(#function + " called with indexPath \(indexPath) and color \(wordSets[indexPath.row])")
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "tableWordSets", for: indexPath)
         
@@ -38,6 +39,9 @@ class WordSetViewController: UITableViewController {
         return cell
     }
     
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        selectedWordSet = indexPath.row
+    }
     
     // MARK: - Action Methods -
     @IBAction func cancelTapped(sender: AnyObject) {

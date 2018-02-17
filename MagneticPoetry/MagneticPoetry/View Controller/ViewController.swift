@@ -9,19 +9,18 @@
 import UIKit
 
 class ViewController: UIViewController {
-    let words = ["could","cloud","bot","bit","ask","a","geek","flame","file","ed","ed","create","like","lap","is","ing","I","her","drive","get","soft","screen","protect","online","meme","to","they","that","tech","space","source","y","write","while"]
-    
-    let words_2 = ["word", "set", "two"]
-    
-    let words_3 = ["word", "set", "three"]
+    var wordSelector = WordSetSelector();
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        placeWords()
+        
+        
+        placeWords(words: wordSelector.getWordSet(index: 0))
     }
     
-    func placeWords() {
+    func placeWords(words: Array<String>) {
+        print(#function + " called")
         let screenWidth = UIScreen.main.bounds.width
         //        let screenHeight = UIScreen.main.bounds.height
         let xPadding: CGFloat = 15
@@ -75,6 +74,21 @@ class ViewController: UIViewController {
         }
     }
     
+    
+    @IBAction func unwindToMain(segue: UIStoryboardSegue) {
+        if (segue.identifier == "DoneTapped") {
+            let wordSetVC = segue.source as! WordSetViewController
+            
+            if (wordSetVC.selectedWordSet == nil) {
+                print(#function + "exited with nil")
+                return
+            }
+            let wordSetIndex = wordSetVC.selectedWordSet
+            
+            placeWords(words: wordSelector.getWordSet(index: wordSetIndex))
+        }
+    }
+
     @objc func doPanGesture(panGesture:UIPanGestureRecognizer) {
         let label = panGesture.view as! UILabel
         let position = panGesture.location(in: view)

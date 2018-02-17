@@ -43,6 +43,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="282" y="134"/>
         </scene>
         <!--Word Set View Controller-->
         <scene sceneID="TDW-qr-Urx">
@@ -73,12 +74,17 @@
                                 <action selector="cancelTappedWithSender:" destination="veV-f7-GO7" id="HXx-xp-kPw"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Done" id="JSx-GN-20h"/>
+                        <barButtonItem key="rightBarButtonItem" title="Done" id="JSx-GN-20h">
+                            <connections>
+                                <segue destination="OqM-Hw-Ohc" kind="unwind" identifier="DoneTapped" unwindAction="unwindToMainWithSegue:" id="sqE-tX-qK6"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="R4h-hh-giW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="OqM-Hw-Ohc" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1716" y="134"/>
+            <point key="canvasLocation" x="1593" y="134"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="CIr-s5-ON0">
