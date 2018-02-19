@@ -24,7 +24,7 @@ The goal is to create a word magnet app that will be easy to understand and use 
 ### App State  
 User are able to drag words using the pan gesture. Words are neatly positioned at the top of the app. It works as a universal app on iPhone/iPad.  
 
-![Checkpoint 1 - App State ](Assets/screenShots/startUpLook.png)
+![Checkpoint 1 - App State ](Assets/screenShots/checkpoint-1_main.png)
 
 ### New Features  
 * Basic app icon image
