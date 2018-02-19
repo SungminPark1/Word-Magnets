@@ -13,6 +13,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var WordSetToolBar: UIToolbar!
     @IBOutlet weak var WordBoxScrollView: UIScrollView!
     
+    var isWordBoxCollapsed = true
     var wordSelector = WordSetSelector()
     var labelArray: Array<UILabel> = []
     
@@ -104,6 +105,26 @@ class ViewController: UIViewController {
     }
     
     @IBAction func ShowWordBox(_ sender: Any) {
+        if(isWordBoxCollapsed) {
+            UIView.animate(withDuration: 0.5, animations: {
+                self.WordSetToolBar.frame.origin.y -= (UIScreen.main.bounds.height * 0.2)
+                self.WordBoxScrollView.frame.origin.y -= (UIScreen.main.bounds.height * 0.2)
+                
+            }, completion: { (value: Bool) in
+                self.isWordBoxCollapsed = false
+                
+            })
+        }
+        else {
+            UIView.animate(withDuration: 0.5, animations: {
+                self.WordSetToolBar.frame.origin.y += (UIScreen.main.bounds.height * 0.2)
+                self.WordBoxScrollView.frame.origin.y += (UIScreen.main.bounds.height * 0.2)
+                
+            }, completion: { (value: Bool) in
+                self.isWordBoxCollapsed = true
+                
+            })
+        }
         
     }
     
