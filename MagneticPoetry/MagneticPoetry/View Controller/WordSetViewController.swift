@@ -9,11 +9,18 @@
 import UIKit
 
 class WordSetViewController: UITableViewController {
+    
+    @IBOutlet var WordBoxTableView: UITableView!
     var wordSets = ["set1", "set2"]
     var selectedWordSet: Int?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // removes footers from empty cells
+        WordBoxTableView.tableFooterView = UIView(frame: .zero)
+        
+        
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {

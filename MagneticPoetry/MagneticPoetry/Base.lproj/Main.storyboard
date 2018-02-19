@@ -80,6 +80,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="WordBoxTableView" destination="KBn-Ox-DA9" id="VgC-eH-Pqn"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="R4h-hh-giW" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="OqM-Hw-Ohc" userLabel="Exit" sceneMemberID="exit"/>
