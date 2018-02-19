@@ -1,33 +1,65 @@
-# Word-Magnets
+# Magnetic Poetry
+Sungmin Park and Ian Oliver
 
-<a href="#Current-App-Icon">Current App Icon</a>  
-<a href="#Current-App-Launch-Screen">Current App Launch Screen</a>  
-<a href="#Current-App-Startup-Look">Current App Startup Look</a>  
-<a href="#Milestone-1-Work">Milestone 1 Work</a>  
+A interactive word based app. 
 
-## Current App Icon
-<img src="Assets/icon/AppIcon.appiconset/Icon-98@2x.png"></img>  
+<a href="#Checkpoint-1">Checkpoint 1</a>  
+<a href="#Checkpoint-2">Checkpoint 2</a>  
 
-This is a basic design of what the app icon will look like. In future updates the icon will likely be changed.
 
-## Current App Launch Screen
-<img src="Assets/launchImage/tempLaunchScreen.png" style="width: 250px"></img>  
+## Proposed Features  
+* Edit poem name
+* Change font size
+* Word Box containing all words  
+* Different fonts  
+* Ability to share poem to social media   
 
-This is a basic design of what the launch screen will look like. In the futre will will be updated to better
-fit the theme of our words. Will also look into finding a better solution for the difference in iphone and
-ipad launch screen size.
+## Checkpoint 1  
 
-## Current App Startup Look
-<img src="Assets/screenShots/startUpLook.png" style="width: 250px"></img>  
+### Initial Design
+The goal is to create a word magnet app that will be easy to understand and use for any user.  
 
-This is what the app looks like once it has finished loading in. At the moment the cyan rectangles around the
-word is the touch event size (min size is 40x40px). On both iPhone and iPad the app will load the words in a
-row until it gets to close to the edge of the screen. It will start a new row and continue until all words are
-placed on screen.
+![Sketch ](Assets/mock.png)  
 
-## Milestone 1 Work
-* Clone Magneto Code
-* Update placeWords func to neatly place words in rows
-* Words have min size of 40x40px (currently showing size with cyan background)
+### App State  
+User are able to drag words using the pan gesture. Words are neatly positioned at the top of the app. It works as a universal app on iPhone/iPad.  
+
+![Checkpoint 1 - App State ](Assets/screenShots/startUpLook.png)
+
+### New Features  
 * Basic app icon image
 * Basic app launch screen image
+* Draggable Words
+* Min word size is 40x40px
+* Words are neatly placed at the top of the screen
+
+### Upcoming
+* Basic toolbar
+* Basic word set select screen
+
+<a href="#Magnetic-Poetry">To Top</a>  
+
+## Checkpoint 2  
+
+### App State  
+Added in a toolbar with a button that will open up the word set table menu.  
+
+![Checkpoint 1 - App State ](Assets/screenShots/checkpoint-2_main.png)
+
+From this screen users will be able to select different word sets. Currently just labeled as Word Set 1, Word Set 2... until we come up with a overall theme and distinct word sets.  
+
+![Checkpoint 1 - App State ](Assets/screenShots/checkpoint-2_wordSet.png)
+
+### New Features  
+* Create Tabel View (Word Set)
+* Word Set is replaced when different set is selected
+
+### Upcoming  
+* Word Box
+* Basic Menu
+* Share Features
+* Backgrounds
+
+<a href="#Magnetic-Poetry">To Top</a>  
+
+## Final Checkpoint
