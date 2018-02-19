@@ -9,6 +9,10 @@
 import UIKit
 
 class ViewController: UIViewController {
+    
+    @IBOutlet weak var WordSetToolBar: UIToolbar!
+    @IBOutlet weak var WordBoxScrollView: UIScrollView!
+    
     var wordSelector = WordSetSelector()
     var labelArray: Array<UILabel> = []
     
@@ -16,6 +20,10 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         placeWords(words: wordSelector.getWordSet(index: 0))
+        
+        // setting word box constants
+        let screenSize: CGRect = UIScreen.main.bounds
+        WordBoxScrollView.contentSize.height = screenSize.height * 0.2
     }
     
     func placeWords(words: Array<String>) {
@@ -60,6 +68,9 @@ class ViewController: UIViewController {
             
             labelArray.append(wordLabel)
             view.addSubview(wordLabel)
+            
+            
+
         }
     }
     
@@ -71,7 +82,8 @@ class ViewController: UIViewController {
         }
     }
     
-    
+    // ACTIONS
+    //-------------------------------
     @IBAction func unwindToMain(segue: UIStoryboardSegue) {
         if (segue.identifier == "DoneTapped") {
             let wordSetVC = segue.source as! WordSetViewController
@@ -90,6 +102,11 @@ class ViewController: UIViewController {
             placeWords(words: wordSelector.getWordSet(index: wordSetIndex))
         }
     }
+    
+    @IBAction func ShowWordBox(_ sender: Any) {
+        
+    }
+    
 
     @objc func doPanGesture(panGesture:UIPanGestureRecognizer) {
         let label = panGesture.view as! UILabel
