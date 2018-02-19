@@ -20,7 +20,7 @@ class WordSetSelector {
     }
     
     func getWordSet(index: Int?) -> Array<String> {
-//        print(#function + " index: \(index)")
+
         switch index {
         case 0?:
             return words

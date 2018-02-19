@@ -9,13 +9,11 @@
 import UIKit
 
 class ViewController: UIViewController {
-    var wordSelector = WordSetSelector();
+    var wordSelector = WordSetSelector()
     var labelArray: Array<UILabel> = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
         
         placeWords(words: wordSelector.getWordSet(index: 0))
     }
@@ -23,7 +21,6 @@ class ViewController: UIViewController {
     func placeWords(words: Array<String>) {
         print(#function + " called")
         let screenWidth = UIScreen.main.bounds.width
-        //        let screenHeight = UIScreen.main.bounds.height
         let xPadding: CGFloat = 15
         let yPadding: CGFloat = 50
         var xPlacement: CGFloat = 0
@@ -34,7 +31,7 @@ class ViewController: UIViewController {
             wordLabel.textAlignment = .center
             wordLabel.text = word
             wordLabel.sizeToFit()
-            wordLabel.backgroundColor = UIColor.cyan // used to show label size
+            wordLabel.backgroundColor = UIColor.cyan
             
             // check if placement will not go offscreen
             if (xPlacement + xPadding + wordLabel.frame.width >= screenWidth - xPadding) {
@@ -53,7 +50,6 @@ class ViewController: UIViewController {
                 wordLabel.frame = CGRect(x: x, y: y, width: wordLabel.frame.width, height: 40)
             }
             
-            // update xPlacement
             xPlacement += xPadding + wordLabel.frame.width
             
             // make label draggable
@@ -62,7 +58,6 @@ class ViewController: UIViewController {
             let panGesture = UIPanGestureRecognizer(target: self, action: #selector(doPanGesture))
             wordLabel.addGestureRecognizer(panGesture)
             
-            // add words label to view
             labelArray.append(wordLabel)
             view.addSubview(wordLabel)
         }

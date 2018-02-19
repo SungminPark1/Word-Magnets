@@ -17,23 +17,19 @@ class WordSetViewController: UITableViewController {
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // print(#function + " called")
         
         return 1
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // print(#function + " called with \(wordSets.count) rows")
         
         return wordSets.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        // print(#function + " called with indexPath \(indexPath) and color \(wordSets[indexPath.row])")
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "tableWordSets", for: indexPath)
         
-        // display the color name
         cell.textLabel?.text = wordSets[indexPath.row]
         
         return cell
