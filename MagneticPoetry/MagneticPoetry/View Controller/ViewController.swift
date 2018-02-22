@@ -12,8 +12,16 @@ class ViewController: UIViewController {
     var wordSelector = WordSetSelector()
     var labelArray: Array<UILabel> = []
     
+    // navigation related var
+    var navTitle: String? = "Poem Name"
+    
+    // Outlets
+    @IBOutlet weak var navBar: UINavigationBar!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        navBar.topItem?.title = navTitle
         
         placeWords(words: wordSelector.getWordSet(index: 0))
     }
@@ -24,7 +32,7 @@ class ViewController: UIViewController {
         let xPadding: CGFloat = 15
         let yPadding: CGFloat = 50
         var xPlacement: CGFloat = 0
-        var yPlacement: CGFloat = 40
+        var yPlacement: CGFloat = 80
         
         for word in words {
             let wordLabel = UILabel()
@@ -88,6 +96,13 @@ class ViewController: UIViewController {
             
             labelArray.removeAll()
             placeWords(words: wordSelector.getWordSet(index: wordSetIndex))
+        } else if (segue.identifier == "MenuTapped") {
+            let menuPopupVC = segue.source as! MenuPopupViewController
+            
+            if (menuPopupVC.selectedCell == "Clear") {
+                print("clear board")
+            }
+            print("MenuTapped")
         }
     }
 
@@ -96,6 +111,10 @@ class ViewController: UIViewController {
         let position = panGesture.location(in: view)
         
         label.center = position
+    }
+    
+    override var prefersStatusBarHidden: Bool {
+        return true
     }
 }
 

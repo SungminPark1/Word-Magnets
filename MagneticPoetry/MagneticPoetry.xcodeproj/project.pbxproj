@@ -14,6 +14,7 @@
 		3B90B8D22038D33D00396508 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3B90B8D02038D33D00396508 /* LaunchScreen.storyboard */; };
 		3B90B8DC2038D67D00396508 /* WordSetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B90B8DB2038D67D00396508 /* WordSetViewController.swift */; };
 		3B90B8DF2038D8BD00396508 /* WordSetSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B90B8DE2038D8BD00396508 /* WordSetSelector.swift */; };
+		3B90B90A203F3D4400396508 /* MenuPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B90B909203F3D4400396508 /* MenuPopupViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		3B90B8D32038D33D00396508 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3B90B8DB2038D67D00396508 /* WordSetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordSetViewController.swift; sourceTree = "<group>"; };
 		3B90B8DE2038D8BD00396508 /* WordSetSelector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordSetSelector.swift; sourceTree = "<group>"; };
+		3B90B909203F3D4400396508 /* MenuPopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuPopupViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +84,7 @@
 			children = (
 				3B90B8C92038D33D00396508 /* ViewController.swift */,
 				3B90B8DB2038D67D00396508 /* WordSetViewController.swift */,
+				3B90B909203F3D4400396508 /* MenuPopupViewController.swift */,
 			);
 			path = "View Controller";
 			sourceTree = "<group>";
@@ -159,6 +162,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3B90B8DF2038D8BD00396508 /* WordSetSelector.swift in Sources */,
+				3B90B90A203F3D4400396508 /* MenuPopupViewController.swift in Sources */,
 				3B90B8DC2038D67D00396508 /* WordSetViewController.swift in Sources */,
 				3B90B8CA2038D33D00396508 /* ViewController.swift in Sources */,
 				3B90B8C82038D33D00396508 /* AppDelegate.swift in Sources */,
