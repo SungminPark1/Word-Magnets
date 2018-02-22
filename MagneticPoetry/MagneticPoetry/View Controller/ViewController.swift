@@ -17,45 +17,41 @@ class ViewController: UIViewController {
     
     
     var wordSelector = WordSetSelector()
-    var labelArray: Array<UILabel> = []
+    var wordSelectIndex: Int? = 0
+    var wordBoxLabelArray: Array<UILabel> = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // detect if the user has rotated the screen
         NotificationCenter.default.addObserver(self, selector: #selector(self.rotated), name: NSNotification.Name.UIDeviceOrientationDidChange, object: nil)
-        
-        placeWords(words: wordSelector.getWordSet(index: 0))
-        
         isWordBoxCollapsed = true
+
+        WordBoxScrollView.contentSize.width = UIScreen.main.bounds.width
+        print(UIScreen.main.bounds.width)
+
         
-        // set height of word box
-        WordBoxScrollView.layoutIfNeeded()
-        WordBoxScrollView.isScrollEnabled = true
-        WordBoxScrollView.contentSize.height = UIScreen.main.bounds.height * 0.25
-        print(WordBoxScrollView.contentSize.height)
-        WordBoxScrollView.contentSize = CGSize(width: self.view.frame.width, height: WordBoxScrollView.frame.size.height)
-        WordBoxScrollView.backgroundColor = UIColor.red
+        placeWords(words: wordSelector.getWordSet(index: wordSelectIndex))
         
     }
     
     func placeWords(words: Array<String>) {
         print(#function + " called")
-        let screenWidth = UIScreen.main.bounds.width
+        let wordBoxWidth = WordBoxScrollView.contentSize.width
         let xPadding: CGFloat = 15
         let yPadding: CGFloat = 50
         var xPlacement: CGFloat = 0
-        var yPlacement: CGFloat = 40
+        var yPlacement: CGFloat = 20
         
         for word in words {
             let wordLabel = UILabel()
             wordLabel.textAlignment = .center
             wordLabel.text = word
             wordLabel.sizeToFit()
-            wordLabel.backgroundColor = UIColor.cyan
+            wordLabel.backgroundColor = UIColor.white
             
             // check if placement will not go offscreen
-            if (xPlacement + xPadding + wordLabel.frame.width >= screenWidth - xPadding) {
+            if (xPlacement + xPadding + wordLabel.frame.width >= wordBoxWidth - xPadding) {
                 xPlacement = 0
                 yPlacement += yPadding
             }
@@ -73,24 +69,21 @@ class ViewController: UIViewController {
             
             xPlacement += xPadding + wordLabel.frame.width
             
-            // make label draggable
-            wordLabel.isUserInteractionEnabled = true
             
-            let panGesture = UIPanGestureRecognizer(target: self, action: #selector(doPanGesture))
-            wordLabel.addGestureRecognizer(panGesture)
+            wordBoxLabelArray.append(wordLabel)
+            WordBoxScrollView.addSubview(wordLabel)
             
-            labelArray.append(wordLabel)
-            view.addSubview(wordLabel)
-            
-            
-
         }
+        
+        WordBoxScrollView.contentSize.height = yPlacement + yPadding
     }
     
     @objc func rotated() {
         
         isWordBoxCollapsed = true
-        
+        WordBoxScrollView.contentSize.width = UIScreen.main.bounds.width
+        print(UIScreen.main.bounds.width)
+        placeWords(words: wordSelector.getWordSet(index: wordSelectIndex))
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -111,38 +104,40 @@ class ViewController: UIViewController {
                 print(#function + "exited with nil")
                 return
             }
-            let wordSetIndex = wordSetVC.selectedWordSet
+            wordSelectIndex = wordSetVC.selectedWordSet
             
-            for label in labelArray {
+            for label in wordBoxLabelArray {
                 label.removeFromSuperview()
             }
             
-            labelArray.removeAll()
-            placeWords(words: wordSelector.getWordSet(index: wordSetIndex))
+            wordBoxLabelArray.removeAll()
+            isWordBoxCollapsed = true
+            placeWords(words: wordSelector.getWordSet(index: wordSelectIndex))
         }
     }
     
     @IBAction func ShowWordBox(_ sender: Any) {
         
-        let wordBoxCollapseDistance: CGFloat = 0.25
+        let wordBoxCollapseDistance: CGFloat = WordBoxScrollView.frame.height
         
         // scroll wordbox and wordSetToolbar up if collapsed
         if(isWordBoxCollapsed) {
             
             UIView.animate(withDuration: 0.5, animations: {
-                self.WordSetToolBar.frame.origin.y -= (UIScreen.main.bounds.height * wordBoxCollapseDistance)
-                self.WordBoxScrollView.frame.origin.y -= (UIScreen.main.bounds.height * wordBoxCollapseDistance)
+                self.WordSetToolBar.frame.origin.y -= (wordBoxCollapseDistance)
+                self.WordBoxScrollView.frame.origin.y -= (wordBoxCollapseDistance)
                 
             }, completion: { (value: Bool) in
                 self.isWordBoxCollapsed = false
+                
                 
             })
         }
         // scroll wordbox and wordSetToolbar down if not collapsed
         else {
             UIView.animate(withDuration: 0.5, animations: {
-                self.WordSetToolBar.frame.origin.y += (UIScreen.main.bounds.height * wordBoxCollapseDistance)
-                self.WordBoxScrollView.frame.origin.y += (UIScreen.main.bounds.height * wordBoxCollapseDistance)
+                self.WordSetToolBar.frame.origin.y += (wordBoxCollapseDistance)
+                self.WordBoxScrollView.frame.origin.y += (wordBoxCollapseDistance)
                 
             }, completion: { (value: Bool) in
                 self.isWordBoxCollapsed = true
@@ -159,5 +154,7 @@ class ViewController: UIViewController {
         
         label.center = position
     }
+    
+    
 }
 
