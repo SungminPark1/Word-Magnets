@@ -14,13 +14,20 @@ class ViewController: UIViewController {
     @IBOutlet weak var WordBoxScrollView: UIScrollView!
     
     var isWordBoxCollapsed = true
+    
+    
     var wordSelector = WordSetSelector()
     var labelArray: Array<UILabel> = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // detect if the user has rotated the screen
+        NotificationCenter.default.addObserver(self, selector: #selector(self.rotated), name: NSNotification.Name.UIDeviceOrientationDidChange, object: nil)
+        
         placeWords(words: wordSelector.getWordSet(index: 0))
+        
+        isWordBoxCollapsed = true
         
         // set height of word box
         WordBoxScrollView.layoutIfNeeded()
@@ -28,7 +35,7 @@ class ViewController: UIViewController {
         WordBoxScrollView.contentSize.height = UIScreen.main.bounds.height * 0.25
         print(WordBoxScrollView.contentSize.height)
         WordBoxScrollView.contentSize = CGSize(width: self.view.frame.width, height: WordBoxScrollView.frame.size.height)
-        WordBoxScrollView.backgroundColor = UIColor.lightGray
+        WordBoxScrollView.backgroundColor = UIColor.red
         
     }
     
@@ -80,6 +87,12 @@ class ViewController: UIViewController {
         }
     }
     
+    @objc func rotated() {
+        
+        isWordBoxCollapsed = true
+        
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier == "showWordSetSegue") {
             let wordSetVC = segue.destination.childViewControllers[0] as! WordSetViewController
@@ -111,7 +124,7 @@ class ViewController: UIViewController {
     
     @IBAction func ShowWordBox(_ sender: Any) {
         
-        let wordBoxCollapseDistance: CGFloat = 0.20
+        let wordBoxCollapseDistance: CGFloat = 0.25
         
         // scroll wordbox and wordSetToolbar up if collapsed
         if(isWordBoxCollapsed) {
