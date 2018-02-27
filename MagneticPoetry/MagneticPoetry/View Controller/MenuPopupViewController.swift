@@ -3,7 +3,7 @@
 //  MagneticPoetry
 //
 //  Created by Balor on 2/22/18.
-//  Copyright © 2018 Sungmin Park. All rights reserved.
+//  Copyright © 2018 Sungmin Park and Ian Oliver. All rights reserved.
 //
 
 import UIKit
@@ -36,7 +36,8 @@ class MenuPopupViewController: UIViewController, UINavigationControllerDelegate 
     }
 }
 
-// MARK: - Table View DataSource
+// MARK: - Extensions -
+// MARK: - Table View DataSource -
 extension MenuPopupViewController: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -55,7 +56,7 @@ extension MenuPopupViewController: UITableViewDataSource {
     }
 }
 
-// MARK: - Table View Delegate
+// MARK: - Table View Delegate -
 extension MenuPopupViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         selectedCell = menuCells[indexPath.row]
@@ -65,13 +66,27 @@ extension MenuPopupViewController: UITableViewDelegate {
             controller.delegate = self
             controller.sourceType = .photoLibrary
             present(controller, animated: true, completion: nil)
+        } else if (menuCells[indexPath.row] == "Share") {
+            let image = self.view.takeSnapshot()
+            let textToShare = "Share Text"
+            let igmWebsite = NSURL(string: "http://igm.rit.edu/")
+            let objectsToShare: [AnyObject] = [textToShare as AnyObject, igmWebsite!, image!]
+            let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
+            activityVC.excludedActivityTypes = [UIActivityType.print]
+            
+            // These 3 commented out lines will help you on an iPad
+            // let popoverMenuViewController = activityVC.popoverPresentationController
+            // popoverMenuViewController?.permittedArrowDirections = .any
+            // popoverMenuViewController?.barButtonItem = sender as? UIBarButtonItem
+            
+            self.present(activityVC, animated: true, completion: nil)
         } else {
             exitViewWithSegue()
         }
     }
 }
 
-// MARK: - Image Picker Controller Delegate
+// MARK: - Image Picker Controller Delegate -
 extension MenuPopupViewController: UIImagePickerControllerDelegate {
     // TO DO: find a way to move this to another file?
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {

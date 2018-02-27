@@ -23,7 +23,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
 //        navBar.topItem?.title = navTitle
-        navigationItem.title = "NEW TITLE"
+        navigationItem.title = "New Poem"
         placeWords(words: wordSelector.getWordSet(index: 0))
     }
     
