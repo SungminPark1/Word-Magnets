@@ -22,10 +22,14 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" white="0.90000000000000002" alpha="1" colorSpace="calibratedWhite"/>
                             </imageView>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BPh-4O-IcT">
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BPh-4O-IcT">
                                 <rect key="frame" x="0.0" y="623" width="375" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <items>
+                                    <barButtonItem title="Word Box" id="ca0-Rk-VeR">
+                                        <connections>
+                                            <action selector="ShowWordBox:" destination="BYZ-38-t0r" id="l2P-uN-L8Y"/>
+                                        </connections>
+                                    </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="iPr-Ol-vBg"/>
                                     <barButtonItem title="Word Sets" id="BNS-Ri-Erq">
                                         <connections>
@@ -36,11 +40,24 @@
                                     </barButtonItem>
                                 </items>
                             </toolbar>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ej4-6t-MYc">
+                                <rect key="frame" x="0.0" y="667" width="375" height="150"/>
+                                <color key="backgroundColor" white="0.90000000000000002" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="150" id="QuJ-li-RTh"/>
+                                </constraints>
+                            </scrollView>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.97680455450000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="BPh-4O-IcT" secondAttribute="trailing" id="Dax-15-TGg"/>
+                            <constraint firstItem="BPh-4O-IcT" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Dbq-bb-LCd"/>
                             <constraint firstItem="22W-zo-dot" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="HUT-au-J8V"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Ej4-6t-MYc" secondAttribute="trailing" id="NvL-6i-gVf"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="top" secondItem="22W-zo-dot" secondAttribute="top" constant="64" id="ZtV-qI-zN8"/>
+                            <constraint firstItem="BPh-4O-IcT" firstAttribute="bottom" secondItem="Ej4-6t-MYc" secondAttribute="top" id="dwo-RJ-1hb"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="BPh-4O-IcT" secondAttribute="bottom" id="iVC-LA-S4C"/>
+                            <constraint firstItem="Ej4-6t-MYc" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="v4X-3R-PFy"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="22W-zo-dot" secondAttribute="trailing" id="vj9-b1-C0v"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="22W-zo-dot" secondAttribute="bottom" id="yj2-8Y-IRv"/>
                         </constraints>
@@ -55,6 +72,8 @@
                     </navigationItem>
                     <connections>
                         <outlet property="backgroundImage" destination="22W-zo-dot" id="HAU-sY-Vgy"/>
+                        <outlet property="toolBar" destination="BPh-4O-IcT" id="H2R-hm-JoB"/>
+                        <outlet property="wordBoxScrollView" destination="Ej4-6t-MYc" id="PLn-uY-BER"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
