@@ -16,12 +16,13 @@ import UIKit
 
 class MenuPopupViewController: UIViewController, UINavigationControllerDelegate {
     // Variables
-    var menuCells = ["Edit Name", "Edit Background", "Share", "Clear"]
+    var menuCells = ["Edit Title", "Edit Background", "Share", "Clear Poem"]
     var selectedCell: String = ""
     var selectedBackground: UIImage!
     
     // Outlets
     @IBOutlet weak var menuTable: UITableView!
+    @IBOutlet weak var backgroundView: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,10 +30,18 @@ class MenuPopupViewController: UIViewController, UINavigationControllerDelegate 
         menuTable.delegate = self
         menuTable.dataSource = self
         menuTable.tableFooterView = UIView(frame: .zero)
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(viewTapped))
+        
+        backgroundView.addGestureRecognizer(tapGesture)
     }
     
     func exitViewWithSegue() {
         performSegue(withIdentifier: "MenuTapped", sender: self)
+    }
+    
+    @objc func viewTapped(tapGesture: UITapGestureRecognizer) {
+        dismiss(animated: true, completion: nil)
     }
 }
 

@@ -68,6 +68,7 @@ class ViewController: UIViewController {
             let x: CGFloat = xPlacement + xPadding
             let y: CGFloat = yPlacement
             
+            // TO DO: Below if is used in another function create helper function
             // check if label is to small (min size 55x40)
             if (wordLabel.frame.width < 55) {
                 wordLabel.frame = CGRect(x: x, y: y, width: 55, height: 40)
@@ -115,19 +116,43 @@ class ViewController: UIViewController {
     }
     
     @objc func labelTapped(tapGesture: UITapGestureRecognizer) {
-        let label = tapGesture.view as! UILabel
-        label.center = CGPoint(x: 100, y: 100)
+        let newLabel = UILabel()
+        let tappedLabel = tapGesture.view as! UILabel
         
-        // make label draggable
-        label.isUserInteractionEnabled = true
+        newLabel.text = tappedLabel.text
+        newLabel.textAlignment = .center
+        newLabel.sizeToFit()
+        newLabel.backgroundColor = UIColor.white
+        
+        // TO DO: Below if is used in another function create helper function
+        // check if label is to small (min size 55x40)
+        if (newLabel.frame.width < 55) {
+            newLabel.frame = CGRect(x: 100, y: 100, width: 55, height: 40)
+        } else {
+            newLabel.frame = CGRect(x: 100, y: 100, width: newLabel.frame.width, height: 40)
+        }
+        
+        // add gesture events to label
+        newLabel.isUserInteractionEnabled = true
+        
         let panGesture = UIPanGestureRecognizer(target: self, action: #selector(doPanGesture))
-        label.addGestureRecognizer(panGesture)
+        let rotationGesture = UIRotationGestureRecognizer(target: self, action: #selector(doRotationGesture))
         
-        poemLabelArray.append(label)
-        view.addSubview(label)
+        newLabel.addGestureRecognizer(panGesture)
+        newLabel.addGestureRecognizer(rotationGesture)
+        
+        poemLabelArray.append(newLabel)
+        view.addSubview(newLabel)
         isWordBoxCollapsed = true
     }
     
+    @objc func doRotationGesture(rotationGesture: UIRotationGestureRecognizer) {
+        let label = rotationGesture.view as! UILabel
+        let rotation = rotationGesture.rotation
+        label.transform = CGAffineTransform(rotationAngle: rotation)
+        
+        print(rotationGesture.rotation)
+    }
     
     @objc func doPanGesture(panGesture:UIPanGestureRecognizer) {
         let label = panGesture.view as! UILabel

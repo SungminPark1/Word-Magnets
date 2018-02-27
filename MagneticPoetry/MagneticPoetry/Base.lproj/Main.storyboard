@@ -88,6 +88,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cuE-DF-sX9">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="hCa-8M-vxS">
                                 <rect key="frame" x="184" y="64" width="175" height="200"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -111,10 +114,15 @@
                         <constraints>
                             <constraint firstItem="ymG-HH-V1R" firstAttribute="trailing" secondItem="hCa-8M-vxS" secondAttribute="trailing" constant="16" id="6kJ-fe-9pF"/>
                             <constraint firstItem="hCa-8M-vxS" firstAttribute="top" secondItem="ymG-HH-V1R" secondAttribute="top" constant="44" id="Ca3-ol-Gdc"/>
+                            <constraint firstItem="cuE-DF-sX9" firstAttribute="leading" secondItem="ymG-HH-V1R" secondAttribute="leading" id="TOY-0T-Mll"/>
+                            <constraint firstItem="ymG-HH-V1R" firstAttribute="bottom" secondItem="cuE-DF-sX9" secondAttribute="bottom" id="u2Y-Co-mnT"/>
+                            <constraint firstItem="ymG-HH-V1R" firstAttribute="trailing" secondItem="cuE-DF-sX9" secondAttribute="trailing" id="uvz-j7-ySi"/>
+                            <constraint firstItem="ymG-HH-V1R" firstAttribute="top" secondItem="cuE-DF-sX9" secondAttribute="top" constant="20" id="zvh-Tg-2dH"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="ymG-HH-V1R"/>
                     </view>
                     <connections>
+                        <outlet property="backgroundView" destination="cuE-DF-sX9" id="pt6-Fv-1Kr"/>
                         <outlet property="menuTable" destination="hCa-8M-vxS" id="816-q4-coX"/>
                         <segue destination="cQd-Be-6VE" kind="unwind" identifier="MenuTapped" unwindAction="unwindToMainWithSegue:" id="GvG-zN-dNO"/>
                     </connections>
