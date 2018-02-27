@@ -16,7 +16,7 @@ import UIKit
 
 class MenuPopupViewController: UIViewController, UINavigationControllerDelegate {
     // Variables
-    var menuCells = ["Edit Title", "Edit Background", "Share", "Clear Poem"]
+    var menuCells = ["Edit Title", "Edit Background", "Share", "Add Word", "Clear Poem"]
     var selectedCell: String = ""
     var selectedBackground: UIImage!
     

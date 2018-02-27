@@ -10,7 +10,7 @@ import UIKit
 
 class ViewController: UIViewController {
     var wordSelector = WordSetSelector()
-    var wordSelectorIndex: Int? = 0
+    var wordSelectorIndex: Int = 0
     var wordBoxLabelArray: Array<UILabel> = []
     var poemLabelArray: Array<UILabel> = []
     
@@ -38,9 +38,8 @@ class ViewController: UIViewController {
         
         wordBoxScrollView.contentSize.width = UIScreen.main.bounds.width
         
-        placeWordsInWordBox(words: wordSelector.getWordSet(index: 0))
+        placeWordsInWordBox(words: wordSelector.getWordSet(index: wordSelectorIndex))
     }
-    
     
     // MARK - Helper Functions -
     // -------------------------
@@ -103,16 +102,13 @@ class ViewController: UIViewController {
         }
     }
     
-    
-
-    
     // MARK - Objc functions -
     // -----------------------
     @objc func rotated() {
         isWordBoxCollapsed = true
         wordBoxScrollView.contentSize.width = UIScreen.main.bounds.width
         print(UIScreen.main.bounds.width)
-        placeWordsInWordBox(words: wordSelector.getWordSet(index: wordSelectorIndex!))
+        placeWordsInWordBox(words: wordSelector.getWordSet(index: wordSelectorIndex))
     }
     
     @objc func labelTapped(tapGesture: UITapGestureRecognizer) {
@@ -161,11 +157,9 @@ class ViewController: UIViewController {
         label.center = position
     }
     
-    
     // MARK - IBActions -
     // ------------------
     @IBAction func ShowWordBox(_ sender: Any) {
-        
         let wordBoxCollapseDistance: CGFloat = wordBoxScrollView.frame.height
         
         // scroll wordbox and wordSetToolbar up if collapsed
@@ -192,24 +186,23 @@ class ViewController: UIViewController {
                 
             })
         }
-        
     }
     
     @IBAction func unwindToMain(segue: UIStoryboardSegue) {
         if (segue.identifier == "DoneTapped") {
             let wordSetVC = segue.source as! WordSetViewController
             
-            if (wordSetVC.selectedWordSet == nil) {
+            if (wordSetVC.selectedWordSet == -1) {
                 return
             }
-            let wordSetIndex = wordSetVC.selectedWordSet
+            wordSelectorIndex = wordSetVC.selectedWordSet
             
             for label in wordBoxLabelArray {
                 label.removeFromSuperview()
             }
             
             wordBoxLabelArray.removeAll()
-            placeWordsInWordBox(words: wordSelector.getWordSet(index: wordSetIndex!))
+            placeWordsInWordBox(words: wordSelector.getWordSet(index: wordSelectorIndex))
         } else if (segue.identifier == "MenuTapped") {
             let menuPopupVC = segue.source as! MenuPopupViewController
             print("MenuTapped")
@@ -226,7 +219,5 @@ class ViewController: UIViewController {
             }
         }
     }
-    
-
 }
 
