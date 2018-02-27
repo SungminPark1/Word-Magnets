@@ -14,6 +14,8 @@
 		3B90B8D22038D33D00396508 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3B90B8D02038D33D00396508 /* LaunchScreen.storyboard */; };
 		3B90B8DC2038D67D00396508 /* WordSetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B90B8DB2038D67D00396508 /* WordSetViewController.swift */; };
 		3B90B8DF2038D8BD00396508 /* WordSetSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B90B8DE2038D8BD00396508 /* WordSetSelector.swift */; };
+		3B90B90A203F3D4400396508 /* MenuPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B90B909203F3D4400396508 /* MenuPopupViewController.swift */; };
+		3BBD571E2045D08900377202 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BBD571D2045D08900377202 /* UIViewExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +28,8 @@
 		3B90B8D32038D33D00396508 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3B90B8DB2038D67D00396508 /* WordSetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordSetViewController.swift; sourceTree = "<group>"; };
 		3B90B8DE2038D8BD00396508 /* WordSetSelector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordSetSelector.swift; sourceTree = "<group>"; };
+		3B90B909203F3D4400396508 /* MenuPopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuPopupViewController.swift; sourceTree = "<group>"; };
+		3BBD571D2045D08900377202 /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +62,7 @@
 		3B90B8C62038D33D00396508 /* MagneticPoetry */ = {
 			isa = PBXGroup;
 			children = (
+				3BBD571C2045D07000377202 /* Extensions */,
 				3B90B8DA2038D35300396508 /* View Controller */,
 				3B90B8D92038D34E00396508 /* Modal */,
 				3B90B8C72038D33D00396508 /* AppDelegate.swift */,
@@ -82,8 +87,17 @@
 			children = (
 				3B90B8C92038D33D00396508 /* ViewController.swift */,
 				3B90B8DB2038D67D00396508 /* WordSetViewController.swift */,
+				3B90B909203F3D4400396508 /* MenuPopupViewController.swift */,
 			);
 			path = "View Controller";
+			sourceTree = "<group>";
+		};
+		3BBD571C2045D07000377202 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				3BBD571D2045D08900377202 /* UIViewExtension.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -158,7 +172,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3BBD571E2045D08900377202 /* UIViewExtension.swift in Sources */,
 				3B90B8DF2038D8BD00396508 /* WordSetSelector.swift in Sources */,
+				3B90B90A203F3D4400396508 /* MenuPopupViewController.swift in Sources */,
 				3B90B8DC2038D67D00396508 /* WordSetViewController.swift in Sources */,
 				3B90B8CA2038D33D00396508 /* ViewController.swift in Sources */,
 				3B90B8C82038D33D00396508 /* AppDelegate.swift in Sources */,

@@ -3,7 +3,7 @@
 //  MagneticPoetry
 //
 //  Created by Balor on 2/17/18.
-//  Copyright © 2018 Sungmin Park. All rights reserved.
+//  Copyright © 2018 Sungmin Park and Ian Oliver. All rights reserved.
 //
 
 import UIKit
