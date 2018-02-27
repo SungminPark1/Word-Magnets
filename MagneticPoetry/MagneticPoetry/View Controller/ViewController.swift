@@ -41,6 +41,9 @@ class ViewController: UIViewController {
         placeWordsInWordBox(words: wordSelector.getWordSet(index: 0))
     }
     
+    
+    // MARK - Helper Functions -
+    // -------------------------
     func placeWordsInWordBox(words: Array<String>) {
         let wordBoxWidth = wordBoxScrollView.contentSize.width
         let xPadding: CGFloat = 15
@@ -74,11 +77,11 @@ class ViewController: UIViewController {
             
             xPlacement += xPadding + wordLabel.frame.width
             
-//            // make label draggable
-//            wordLabel.isUserInteractionEnabled = true
-//
-//            let panGesture = UIPanGestureRecognizer(target: self, action: #selector(doPanGesture))
-//            wordLabel.addGestureRecognizer(panGesture)
+            
+            // add tap gesture to the labels in the word box
+            wordLabel.isUserInteractionEnabled = true
+            let tapGesture = UITapGestureRecognizer(target: self, action: #selector(labelTapped))
+            wordLabel.addGestureRecognizer(tapGesture)
             
             wordBoxLabelArray.append(wordLabel)
             wordBoxScrollView.addSubview(wordLabel)
@@ -88,6 +91,9 @@ class ViewController: UIViewController {
         wordBoxScrollView.contentSize.height = yPlacement + yPadding
     }
     
+    
+    // MARK: - Override Functions -
+    // ----------------------------
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier == "showWordSetSegue") {
             let wordSetVC = segue.destination.childViewControllers[0] as! WordSetViewController
@@ -96,6 +102,73 @@ class ViewController: UIViewController {
         }
     }
     
+    
+
+    
+    // MARK - Objc functions -
+    // -----------------------
+    @objc func rotated() {
+        isWordBoxCollapsed = true
+        wordBoxScrollView.contentSize.width = UIScreen.main.bounds.width
+        print(UIScreen.main.bounds.width)
+        placeWordsInWordBox(words: wordSelector.getWordSet(index: wordSelectorIndex!))
+    }
+    
+    @objc func labelTapped(tapGesture: UITapGestureRecognizer) {
+        let label = tapGesture.view as! UILabel
+        label.center = CGPoint(x: 100, y: 100)
+        
+        // make label draggable
+        label.isUserInteractionEnabled = true
+        let panGesture = UIPanGestureRecognizer(target: self, action: #selector(doPanGesture))
+        label.addGestureRecognizer(panGesture)
+        
+        poemLabelArray.append(label)
+        view.addSubview(label)
+        isWordBoxCollapsed = true
+    }
+    
+    
+    @objc func doPanGesture(panGesture:UIPanGestureRecognizer) {
+        let label = panGesture.view as! UILabel
+        let position = panGesture.location(in: view)
+        
+        label.center = position
+    }
+    
+    
+    // MARK - IBActions -
+    // ------------------
+    @IBAction func ShowWordBox(_ sender: Any) {
+        
+        let wordBoxCollapseDistance: CGFloat = wordBoxScrollView.frame.height
+        
+        // scroll wordbox and wordSetToolbar up if collapsed
+        if(isWordBoxCollapsed) {
+            
+            UIView.animate(withDuration: 0.5, animations: {
+                self.toolBar.frame.origin.y -= (wordBoxCollapseDistance)
+                self.wordBoxScrollView.frame.origin.y -= (wordBoxCollapseDistance)
+                
+            }, completion: { (value: Bool) in
+                self.isWordBoxCollapsed = false
+                
+                
+            })
+        }
+            // scroll wordbox and wordSetToolbar down if not collapsed
+        else {
+            UIView.animate(withDuration: 0.5, animations: {
+                self.toolBar.frame.origin.y += (wordBoxCollapseDistance)
+                self.wordBoxScrollView.frame.origin.y += (wordBoxCollapseDistance)
+                
+            }, completion: { (value: Bool) in
+                self.isWordBoxCollapsed = true
+                
+            })
+        }
+        
+    }
     
     @IBAction func unwindToMain(segue: UIStoryboardSegue) {
         if (segue.identifier == "DoneTapped") {
@@ -129,49 +202,6 @@ class ViewController: UIViewController {
         }
     }
     
-    @objc func rotated() {
-        isWordBoxCollapsed = true
-        wordBoxScrollView.contentSize.width = UIScreen.main.bounds.width
-        print(UIScreen.main.bounds.width)
-        placeWordsInWordBox(words: wordSelector.getWordSet(index: wordSelectorIndex!))
-    }
-    
-    @IBAction func ShowWordBox(_ sender: Any) {
-        
-        let wordBoxCollapseDistance: CGFloat = wordBoxScrollView.frame.height
-        
-        // scroll wordbox and wordSetToolbar up if collapsed
-        if(isWordBoxCollapsed) {
-            
-            UIView.animate(withDuration: 0.5, animations: {
-                self.toolBar.frame.origin.y -= (wordBoxCollapseDistance)
-                self.wordBoxScrollView.frame.origin.y -= (wordBoxCollapseDistance)
-                
-            }, completion: { (value: Bool) in
-                self.isWordBoxCollapsed = false
-                
-                
-            })
-        }
-            // scroll wordbox and wordSetToolbar down if not collapsed
-        else {
-            UIView.animate(withDuration: 0.5, animations: {
-                self.toolBar.frame.origin.y += (wordBoxCollapseDistance)
-                self.wordBoxScrollView.frame.origin.y += (wordBoxCollapseDistance)
-                
-            }, completion: { (value: Bool) in
-                self.isWordBoxCollapsed = true
-                
-            })
-        }
-        
-    }
-    
-    @objc func doPanGesture(panGesture:UIPanGestureRecognizer) {
-        let label = panGesture.view as! UILabel
-        let position = panGesture.location(in: view)
-        
-        label.center = position
-    }
+
 }
 
