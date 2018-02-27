@@ -19,6 +19,7 @@ class ViewController: UIViewController {
     var wordSelector = WordSetSelector()
     var wordSelectIndex: Int? = 0
     var wordBoxLabelArray: Array<UILabel> = []
+    var poemLabelArray: Array<UILabel> = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,11 +32,11 @@ class ViewController: UIViewController {
         print(UIScreen.main.bounds.width)
 
         
-        placeWords(words: wordSelector.getWordSet(index: wordSelectIndex))
+        placeWordsInWordBox(words: wordSelector.getWordSet(index: wordSelectIndex!))
         
     }
     
-    func placeWords(words: Array<String>) {
+    func placeWordsInWordBox(words: Array<String>) {
         print(#function + " called")
         let wordBoxWidth = WordBoxScrollView.contentSize.width
         let xPadding: CGFloat = 15
@@ -60,9 +61,9 @@ class ViewController: UIViewController {
             let x: CGFloat = xPlacement + xPadding
             let y: CGFloat = yPlacement
             
-            // check if label is to small (min size 40x40)
-            if (wordLabel.frame.width < 40) {
-                wordLabel.frame = CGRect(x: x, y: y, width: 40, height: 40)
+            // check if label is to small (min size 55x40)
+            if (wordLabel.frame.width < 55) {
+                wordLabel.frame = CGRect(x: x, y: y, width: 55, height: 40)
             } else {
                 wordLabel.frame = CGRect(x: x, y: y, width: wordLabel.frame.width, height: 40)
             }
@@ -83,7 +84,7 @@ class ViewController: UIViewController {
         isWordBoxCollapsed = true
         WordBoxScrollView.contentSize.width = UIScreen.main.bounds.width
         print(UIScreen.main.bounds.width)
-        placeWords(words: wordSelector.getWordSet(index: wordSelectIndex))
+        placeWordsInWordBox(words: wordSelector.getWordSet(index: wordSelectIndex!))
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -112,7 +113,7 @@ class ViewController: UIViewController {
             
             wordBoxLabelArray.removeAll()
             isWordBoxCollapsed = true
-            placeWords(words: wordSelector.getWordSet(index: wordSelectIndex))
+            placeWordsInWordBox(words: wordSelector.getWordSet(index: wordSelectIndex!))
         }
     }
     

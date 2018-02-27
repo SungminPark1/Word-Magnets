@@ -19,14 +19,14 @@ class WordSetSelector {
         
     }
     
-    func getWordSet(index: Int?) -> Array<String> {
+    func getWordSet(index: Int) -> Array<String> {
 
         switch index {
-        case 0?:
+        case 0:
             return words
-        case 1?:
+        case 1:
             return words_2
-        case 2?:
+        case 2:
             return words_3
         default:
             return []
