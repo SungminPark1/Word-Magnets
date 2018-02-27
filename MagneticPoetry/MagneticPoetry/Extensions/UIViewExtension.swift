@@ -7,3 +7,16 @@
 //
 
 import Foundation
+import UIKit
+
+extension UIView {
+    func takeSnapshot() -> UIImage? {
+        UIGraphicsBeginImageContextWithOptions(self.bounds.size, false, UIScreen.main.scale)
+        self.drawHierarchy(in: self.bounds, afterScreenUpdates: true)
+        
+        let image = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsGetPDFContextBounds()
+        
+        return image
+    }
+}
