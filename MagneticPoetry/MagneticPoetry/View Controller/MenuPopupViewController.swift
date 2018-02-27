@@ -8,10 +8,17 @@
 
 import UIKit
 
-class MenuPopupViewController: UIViewController {
+//protocol MenuPopupControllerDelegate {
+//    func menuPopupController(didEditName: MenuPopupViewController)
+//    func menuPopupController(didChangeBackground: MenuPopupViewController)
+//    func menuPopupController(didSelect)
+//}
+
+class MenuPopupViewController: UIViewController, UINavigationControllerDelegate {
     // Variables
-    var menuCells = ["Edit Name", "Background", "Share", "Clear"]
+    var menuCells = ["Edit Name", "Edit Background", "Share", "Clear"]
     var selectedCell: String = ""
+    var selectedBackground: UIImage!
     
     // Outlets
     @IBOutlet weak var menuTable: UITableView!
@@ -19,14 +26,13 @@ class MenuPopupViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        menuTable.register(UITableViewCell.self, forCellReuseIdentifier: "menuCell")
         menuTable.delegate = self
         menuTable.dataSource = self
+        menuTable.tableFooterView = UIView(frame: .zero)
     }
     
-    // MARK: - Action Methods -
-    @IBAction func exitView(sender: AnyObject) {
-        dismiss(animated: true, completion: nil)
+    func exitViewWithSegue() {
+        performSegue(withIdentifier: "MenuTapped", sender: self)
     }
 }
 
@@ -44,7 +50,6 @@ extension MenuPopupViewController: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "menuCell", for: indexPath)
         
         cell.textLabel?.text = menuCells[indexPath.row]
-//        cell.backgroundColor = .gray
         
         return cell
     }
@@ -54,8 +59,28 @@ extension MenuPopupViewController: UITableViewDataSource {
 extension MenuPopupViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         selectedCell = menuCells[indexPath.row]
-        performSegue(withIdentifier: "MenuTapped", sender: self)
-        exitView(sender: self)
+        
+        if (menuCells[indexPath.row] == "Edit Background") {
+            let controller = UIImagePickerController()
+            controller.delegate = self
+            controller.sourceType = .photoLibrary
+            present(controller, animated: true, completion: nil)
+        } else {
+            exitViewWithSegue()
+        }
     }
 }
 
+// MARK: - Image Picker Controller Delegate
+extension MenuPopupViewController: UIImagePickerControllerDelegate {
+    // TO DO: find a way to move this to another file?
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        exitViewWithSegue()
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        selectedBackground = info[UIImagePickerControllerOriginalImage] as! UIImage
+        
+        exitViewWithSegue()
+    }
+}

@@ -17,17 +17,17 @@ class ViewController: UIViewController {
     
     // Outlets
     @IBOutlet weak var navBar: UINavigationBar!
+    @IBOutlet weak var backgroundImage: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navBar.topItem?.title = navTitle
-        
+//        navBar.topItem?.title = navTitle
+        navigationItem.title = "NEW TITLE"
         placeWords(words: wordSelector.getWordSet(index: 0))
     }
     
     func placeWords(words: Array<String>) {
-        print(#function + " called")
         let screenWidth = UIScreen.main.bounds.width
         let xPadding: CGFloat = 15
         let yPadding: CGFloat = 50
@@ -85,7 +85,6 @@ class ViewController: UIViewController {
             let wordSetVC = segue.source as! WordSetViewController
             
             if (wordSetVC.selectedWordSet == nil) {
-                print(#function + "exited with nil")
                 return
             }
             let wordSetIndex = wordSetVC.selectedWordSet
@@ -98,23 +97,26 @@ class ViewController: UIViewController {
             placeWords(words: wordSelector.getWordSet(index: wordSetIndex))
         } else if (segue.identifier == "MenuTapped") {
             let menuPopupVC = segue.source as! MenuPopupViewController
+            print("MenuTapped")
             
-            if (menuPopupVC.selectedCell == "Clear") {
+            if (menuPopupVC.selectedCell == "Edit Background") {
+                if (menuPopupVC.selectedBackground == nil) {
+                    return
+                }
+                backgroundImage.image = menuPopupVC.selectedBackground
+                self.view.sendSubview(toBack: backgroundImage)
+                print("Background")
+            } else if (menuPopupVC.selectedCell == "Clear") {
                 print("clear board")
             }
-            print("MenuTapped")
         }
     }
-
+    
     @objc func doPanGesture(panGesture:UIPanGestureRecognizer) {
         let label = panGesture.view as! UILabel
         let position = panGesture.location(in: view)
         
         label.center = position
-    }
-    
-    override var prefersStatusBarHidden: Bool {
-        return true
     }
 }
 
