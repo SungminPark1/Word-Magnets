@@ -91,6 +91,16 @@ class ViewController: UIViewController {
         wordBoxScrollView.contentSize.height = yPlacement + yPadding
     }
     
+    // clears all labels in array
+    // TO DO: Add animation before clearing
+    func clearLableArray(labelArray: Array<UILabel>) {
+        var array = labelArray
+        for label in labelArray {
+            label.removeFromSuperview()
+        }
+        
+        array.removeAll()
+    }
     
     // MARK: - Override Functions -
     // ----------------------------
@@ -202,11 +212,8 @@ class ViewController: UIViewController {
             }
             wordSelectorIndex = wordSetVC.selectedWordSet
             
-            for label in wordBoxLabelArray {
-                label.removeFromSuperview()
-            }
+            clearLableArray(labelArray: wordBoxLabelArray)
             
-            wordBoxLabelArray.removeAll()
             placeWordsInWordBox(words: wordSelector.getWordSet(index: wordSelectorIndex))
         } else if (segue.identifier == "MenuTapped") {
             let menuPopupVC = segue.source as! MenuPopupViewController
@@ -219,8 +226,8 @@ class ViewController: UIViewController {
                 backgroundImage.image = menuPopupVC.selectedBackground
                 self.view.sendSubview(toBack: backgroundImage)
                 print("Background")
-            } else if (menuPopupVC.selectedCell == "Clear") {
-                print("clear board")
+            } else if (menuPopupVC.selectedCell == "Clear Poem") {
+                clearLableArray(labelArray: poemLabelArray)
             }
         }
     }
