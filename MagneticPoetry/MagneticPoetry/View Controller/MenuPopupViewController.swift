@@ -76,7 +76,7 @@ extension MenuPopupViewController: UITableViewDelegate {
             controller.sourceType = .photoLibrary
             present(controller, animated: true, completion: nil)
         } else if (menuCells[indexPath.row] == "Share") {
-            let image = self.view.takeSnapshot()
+            let image = self.presentingViewController?.view.takeSnapshot()
             let textToShare = "Share Text"
             let igmWebsite = NSURL(string: "http://igm.rit.edu/")
             let objectsToShare: [AnyObject] = [textToShare as AnyObject, igmWebsite!, image!]
@@ -99,12 +99,12 @@ extension MenuPopupViewController: UITableViewDelegate {
 extension MenuPopupViewController: UIImagePickerControllerDelegate {
     // TO DO: find a way to move this to another file?
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-        exitViewWithSegue()
+        dismiss(animated: true, completion:  exitViewWithSegue)
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         selectedBackground = info[UIImagePickerControllerOriginalImage] as! UIImage
         
-        exitViewWithSegue()
+        dismiss(animated: true, completion:  exitViewWithSegue)
     }
 }
