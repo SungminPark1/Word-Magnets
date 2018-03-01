@@ -103,16 +103,6 @@ class ViewController: UIViewController {
         array.removeAll()
     }
     
-    // MARK: - Override Functions -
-    // ----------------------------
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if (segue.identifier == "showWordSetSegue") {
-            let wordSetVC = segue.destination.childViewControllers[0] as! WordSetViewController
-            wordSetVC.wordSets = ["Word Set 1", "Word Set 2", "Word Set 3"]
-            wordSetVC.title = "Choose a Word Set"
-        }
-    }
-    
     // MARK - Objc functions -
     // -----------------------
     @objc func rotated() {
