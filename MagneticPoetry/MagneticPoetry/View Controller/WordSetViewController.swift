@@ -11,14 +11,15 @@ import UIKit
 class WordSetViewController: UITableViewController {
     
     @IBOutlet var WordBoxTableView: UITableView!
-    var wordSets = ["set1", "set2"]
     var selectedWordSet: Int = -1
+    var wordSets = ["Word Set 1", "Word Set 2", "Word Set 3", "Punctuation", "Noun Endings", "Verb Endings", "Adjective Endings", "Emojis"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // removes footers from empty cells
         WordBoxTableView.tableFooterView = UIView(frame: .zero)
+        self.title = "Choose a Word Set"
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
