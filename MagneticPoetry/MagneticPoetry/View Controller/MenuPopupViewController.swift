@@ -8,17 +8,12 @@
 
 import UIKit
 
-//protocol MenuPopupControllerDelegate {
-//    func menuPopupController(didEditName: MenuPopupViewController)
-//    func menuPopupController(didChangeBackground: MenuPopupViewController)
-//    func menuPopupController(didSelect)
-//}
-
 class MenuPopupViewController: UIViewController, UINavigationControllerDelegate {
     // Variables
     var menuCells = ["Edit Title", "Edit Background", "Share", "Add Word", "Clear Poem"]
     var selectedCell: String = ""
     var selectedBackground: UIImage!
+    var poemTitle: String = ""
     
     // Outlets
     @IBOutlet weak var menuTable: UITableView!
@@ -70,12 +65,31 @@ extension MenuPopupViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         selectedCell = menuCells[indexPath.row]
         
-        if (menuCells[indexPath.row] == "Edit Background") {
+        if  menuCells[indexPath.row] == "Edit Title" {
+            let alert = UIAlertController(title: "Enter poem's name", message: "", preferredStyle: UIAlertControllerStyle.alert)
+            
+            alert.addTextField(configurationHandler: { (textField) in
+                textField.placeholder = "New Title"
+            })
+            
+            alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel, handler: nil))
+            alert.addAction(UIAlertAction(title: "Done", style: UIAlertActionStyle.default, handler: { (action: UIAlertAction!) in
+                let firstTextField = alert.textFields![0] as UITextField
+                
+                self.poemTitle = firstTextField.text!
+                
+                self.exitViewWithSegue()
+            }))
+            
+            self.present(alert, animated: true, completion: nil)
+        } else if menuCells[indexPath.row] == "Edit Background" {
             let controller = UIImagePickerController()
+            
             controller.delegate = self
             controller.sourceType = .photoLibrary
+            
             present(controller, animated: true, completion: nil)
-        } else if (menuCells[indexPath.row] == "Share") {
+        } else if menuCells[indexPath.row] == "Share" {
             let image = self.presentingViewController?.view.takeSnapshot()
             let textToShare = "Share Text"
             let igmWebsite = NSURL(string: "http://igm.rit.edu/")
