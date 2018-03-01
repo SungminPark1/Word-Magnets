@@ -22,6 +22,7 @@ class ViewController: UIViewController {
     
     // Outlets
     @IBOutlet weak var backgroundImage: UIImageView!
+    @IBOutlet weak var poemView: UIView!
     
     @IBOutlet weak var toolBar: UIToolbar!
     @IBOutlet weak var wordBoxScrollView: UIScrollView!
@@ -153,8 +154,7 @@ class ViewController: UIViewController {
         newLabel.addGestureRecognizer(rotationGesture)
         
         poemLabelArray.append(newLabel)
-        view.addSubview(newLabel)
-        isWordBoxCollapsed = true
+        poemView.addSubview(newLabel)
     }
     
     @objc func doRotationGesture(rotationGesture: UIRotationGestureRecognizer) {
@@ -167,7 +167,7 @@ class ViewController: UIViewController {
     
     @objc func doPanGesture(panGesture:UIPanGestureRecognizer) {
         let label = panGesture.view as! UILabel
-        let position = panGesture.location(in: view)
+        let position = panGesture.location(in: poemView)
         
         label.center = position
     }
