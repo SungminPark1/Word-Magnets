@@ -12,7 +12,7 @@ class WordSetViewController: UITableViewController {
     
     @IBOutlet var WordBoxTableView: UITableView!
     var selectedWordSet: Int = -1
-    var wordSets = ["Word Set 1", "Word Set 2", "Word Set 3", "Punctuation", "Noun Endings", "Verb Endings", "Adjective Endings", "Emojis"]
+    var wordSets = ["Word Set 1", "Word Set 2", "Word Set 3", "Punctuation", "Suffixes", "Emojis"]
     
     override func viewDidLoad() {
         super.viewDidLoad()

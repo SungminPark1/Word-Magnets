@@ -130,8 +130,8 @@ class ViewController: UIViewController {
         }
         
         newLabel.layer.shadowColor = UIColor.black.cgColor
-        newLabel.layer.shadowOpacity = 1.0
-        newLabel.layer.shadowOffset = CGSize(width: 3, height: 3)
+        newLabel.layer.shadowOpacity = 0.75
+        newLabel.layer.shadowOffset = CGSize(width: 1, height: 3)
         newLabel.layer.masksToBounds = false
         
         // add gesture events to label
