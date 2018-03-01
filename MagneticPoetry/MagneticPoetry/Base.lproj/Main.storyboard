@@ -55,17 +55,17 @@
                         <constraints>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="BPh-4O-IcT" secondAttribute="trailing" id="Dax-15-TGg"/>
                             <constraint firstItem="BPh-4O-IcT" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Dbq-bb-LCd"/>
-                            <constraint firstItem="22W-zo-dot" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="HUT-au-J8V"/>
+                            <constraint firstItem="22W-zo-dot" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="KPS-Sr-WSb"/>
                             <constraint firstItem="q2Y-XX-9b3" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="KQV-Ws-qst"/>
+                            <constraint firstItem="22W-zo-dot" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="L7J-QU-UOA"/>
                             <constraint firstItem="q2Y-XX-9b3" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="NaS-rs-M7l"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Ej4-6t-MYc" secondAttribute="trailing" id="NvL-6i-gVf"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="22W-zo-dot" secondAttribute="bottom" constant="44" id="OGg-rX-7iG"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="q2Y-XX-9b3" secondAttribute="trailing" id="Peo-6U-Jbc"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="22W-zo-dot" secondAttribute="bottom" constant="44" id="TWp-2D-Eni"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="top" secondItem="22W-zo-dot" secondAttribute="top" id="ZtV-qI-zN8"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="22W-zo-dot" secondAttribute="trailing" id="Yfo-np-jnB"/>
                             <constraint firstItem="BPh-4O-IcT" firstAttribute="bottom" secondItem="Ej4-6t-MYc" secondAttribute="top" id="dwo-RJ-1hb"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="BPh-4O-IcT" secondAttribute="bottom" id="iVC-LA-S4C"/>
                             <constraint firstItem="Ej4-6t-MYc" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="v4X-3R-PFy"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="22W-zo-dot" secondAttribute="trailing" id="vj9-b1-C0v"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="q2Y-XX-9b3" secondAttribute="bottom" constant="44" id="wL5-wu-YMC"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
