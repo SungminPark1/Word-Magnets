@@ -141,7 +141,7 @@
             </objects>
             <point key="canvasLocation" x="1404" y="432.23388305847078"/>
         </scene>
-        <!--Word Set View Controller-->
+        <!--Choose a Word Set-->
         <scene sceneID="TDW-qr-Urx">
             <objects>
                 <tableViewController id="veV-f7-GO7" customClass="WordSetViewController" customModule="MagneticPoetry" customModuleProvider="target" sceneMemberID="viewController">
@@ -164,7 +164,7 @@
                             <outlet property="delegate" destination="veV-f7-GO7" id="e92-ww-y3U"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="RNz-xB-OgB">
+                    <navigationItem key="navigationItem" title="Choose a Word Set" id="RNz-xB-OgB">
                         <barButtonItem key="leftBarButtonItem" title="Cancel" id="1ZG-1Q-r41">
                             <connections>
                                 <action selector="cancelTappedWithSender:" destination="veV-f7-GO7" id="HXx-xp-kPw"/>

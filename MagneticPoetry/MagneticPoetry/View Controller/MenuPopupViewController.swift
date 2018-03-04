@@ -13,7 +13,7 @@ class MenuPopupViewController: UIViewController, UINavigationControllerDelegate 
     var menuCells = ["Edit Title", "Edit Background", "Share", "Add Word", "Clear Poem"]
     var selectedCell: String = ""
     var selectedBackground: UIImage!
-    var poemTitle: String = ""
+    var alertTextField: String = ""
     
     // Outlets
     @IBOutlet weak var menuTable: UITableView!
@@ -31,10 +31,31 @@ class MenuPopupViewController: UIViewController, UINavigationControllerDelegate 
         backgroundView.addGestureRecognizer(tapGesture)
     }
     
+    // MARK: - Helper Function -
     func exitViewWithSegue() {
         performSegue(withIdentifier: "MenuTapped", sender: self)
     }
     
+    func createTextBoxAlert(title: String, placeHolder: String) {
+        let alert = UIAlertController(title: title, message: "", preferredStyle: UIAlertControllerStyle.alert)
+        
+        alert.addTextField(configurationHandler: { (textField) in
+            textField.placeholder = placeHolder
+        })
+        
+        alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.destructive, handler: nil))
+        alert.addAction(UIAlertAction(title: "Done", style: UIAlertActionStyle.default, handler: { (action: UIAlertAction!) in
+            let firstTextField = alert.textFields![0] as UITextField
+            
+            self.alertTextField = firstTextField.text!
+            
+            self.exitViewWithSegue()
+        }))
+        
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    // MARK: - Objc Function -
     @objc func viewTapped(tapGesture: UITapGestureRecognizer) {
         dismiss(animated: true, completion: nil)
     }
@@ -66,22 +87,7 @@ extension MenuPopupViewController: UITableViewDelegate {
         selectedCell = menuCells[indexPath.row]
         
         if  menuCells[indexPath.row] == "Edit Title" {
-            let alert = UIAlertController(title: "Enter poem's name", message: "", preferredStyle: UIAlertControllerStyle.alert)
-            
-            alert.addTextField(configurationHandler: { (textField) in
-                textField.placeholder = "New Title"
-            })
-            
-            alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel, handler: nil))
-            alert.addAction(UIAlertAction(title: "Done", style: UIAlertActionStyle.default, handler: { (action: UIAlertAction!) in
-                let firstTextField = alert.textFields![0] as UITextField
-                
-                self.poemTitle = firstTextField.text!
-                
-                self.exitViewWithSegue()
-            }))
-            
-            self.present(alert, animated: true, completion: nil)
+            self.createTextBoxAlert(title: "Enter poem's name", placeHolder: "New Title")
         } else if menuCells[indexPath.row] == "Edit Background" {
             let controller = UIImagePickerController()
             
@@ -105,6 +111,8 @@ extension MenuPopupViewController: UITableViewDelegate {
             }
             
             self.present(activityVC, animated: true, completion: nil)
+        } else if menuCells[indexPath.row] == "Add Word" {
+            self.createTextBoxAlert(title: "Add word to current set", placeHolder: "New Word")
         } else {
             exitViewWithSegue()
         }
