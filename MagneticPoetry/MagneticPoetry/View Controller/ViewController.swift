@@ -191,7 +191,7 @@ class ViewController: UIViewController {
             clearLableArray(labelArray: wordBoxLabelArray)
             wordBoxLabelArray.removeAll()
             
-            wordSelector.selectedSet = wordSetVC.selectedWordSet
+            wordSelector.selectedSetIndex = wordSetVC.selectedWordSet
             placeWordsInWordBox(words: wordSelector.getWordSet())
         } else if segue.identifier == "MenuTapped" {
             let menuPopupVC = segue.source as! MenuPopupViewController
