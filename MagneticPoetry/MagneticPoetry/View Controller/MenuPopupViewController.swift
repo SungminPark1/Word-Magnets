@@ -41,7 +41,7 @@ class MenuPopupViewController: UIViewController, UINavigationControllerDelegate 
 }
 
 // MARK: - Extensions -
-// MARK: - Table View DataSource -
+// Table View DataSource
 extension MenuPopupViewController: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -60,7 +60,7 @@ extension MenuPopupViewController: UITableViewDataSource {
     }
 }
 
-// MARK: - Table View Delegate -
+// Table View Delegate
 extension MenuPopupViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         selectedCell = menuCells[indexPath.row]
@@ -97,7 +97,7 @@ extension MenuPopupViewController: UITableViewDelegate {
             let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
             activityVC.excludedActivityTypes = [UIActivityType.print]
             
-            // These 3 commented out lines will help you on an iPad
+            // specific for ipad
             if (UIDevice.current.userInterfaceIdiom == UIUserInterfaceIdiom.pad) {
                 let popoverMenuViewController = activityVC.popoverPresentationController
                 popoverMenuViewController?.sourceView = self.view
@@ -111,9 +111,8 @@ extension MenuPopupViewController: UITableViewDelegate {
     }
 }
 
-// MARK: - Image Picker Controller Delegate -
+// Image Picker Controller Delegate
 extension MenuPopupViewController: UIImagePickerControllerDelegate {
-    // TO DO: find a way to move this to another file?
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         dismiss(animated: true, completion:  exitViewWithSegue)
     }

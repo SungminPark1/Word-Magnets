@@ -63,16 +63,9 @@ class ViewController: UIViewController {
             let x: CGFloat = xPlacement + xPadding
             let y: CGFloat = yPlacement
             
-            // TO DO: Below if is used in another function create helper function
-            // check if label is to small (min size 55x40)
-            if (wordLabel.frame.width < 55) {
-                wordLabel.frame = CGRect(x: x, y: y, width: 55, height: 40)
-            } else {
-                wordLabel.frame = CGRect(x: x, y: y, width: wordLabel.frame.width, height: 40)
-            }
+            wordLabel.checkSize(x: x, y: y, minWidth: 55, minHeight: 40)
             
             xPlacement += xPadding + wordLabel.frame.width
-            
             
             // add tap gesture to the labels in the word box
             wordLabel.isUserInteractionEnabled = true
@@ -125,15 +118,10 @@ class ViewController: UIViewController {
         newLabel.textAlignment = .center
         newLabel.sizeToFit()
         newLabel.backgroundColor = UIColor.white
+
+        newLabel.checkSize(x: 100, y: 100, minWidth: 55, minHeight: 40)
         
-        // TO DO: Below if is used in another function create helper function
-        // check if label is to small (min size 55x40)
-        if newLabel.frame.width < 55 {
-            newLabel.frame = CGRect(x: 100, y: 100, width: 55, height: 40)
-        } else {
-            newLabel.frame = CGRect(x: 100, y: 100, width: newLabel.frame.width, height: 40)
-        }
-        
+        // box shaddow
         newLabel.layer.shadowColor = UIColor.black.cgColor
         newLabel.layer.shadowOpacity = 0.75
         newLabel.layer.shadowOffset = CGSize(width: 1, height: 3)
