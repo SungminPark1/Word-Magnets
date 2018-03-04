@@ -98,9 +98,11 @@ extension MenuPopupViewController: UITableViewDelegate {
             activityVC.excludedActivityTypes = [UIActivityType.print]
             
             // These 3 commented out lines will help you on an iPad
-            // let popoverMenuViewController = activityVC.popoverPresentationController
-            // popoverMenuViewController?.permittedArrowDirections = .any
-            // popoverMenuViewController?.barButtonItem = sender as? UIBarButtonItem
+            if (UIDevice.current.userInterfaceIdiom == UIUserInterfaceIdiom.pad) {
+                let popoverMenuViewController = activityVC.popoverPresentationController
+                popoverMenuViewController?.sourceView = self.view
+                popoverMenuViewController?.permittedArrowDirections = .any
+            }
             
             self.present(activityVC, animated: true, completion: nil)
         } else {

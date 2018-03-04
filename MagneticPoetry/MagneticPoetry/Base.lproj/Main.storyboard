@@ -73,7 +73,7 @@
                     <navigationItem key="navigationItem" title="Title" id="68j-Qf-FgS">
                         <barButtonItem key="rightBarButtonItem" title="Menu" id="DYt-dF-Nst">
                             <connections>
-                                <segue destination="YGi-bK-OHn" kind="presentation" identifier="popupMenu" id="GUq-6r-bKX"/>
+                                <segue destination="YGi-bK-OHn" kind="presentation" identifier="popupMenuSegue" id="GUq-6r-bKX"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -81,6 +81,7 @@
                         <outlet property="backgroundImage" destination="22W-zo-dot" id="HAU-sY-Vgy"/>
                         <outlet property="poemView" destination="q2Y-XX-9b3" id="2rE-0f-7lM"/>
                         <outlet property="toolBar" destination="BPh-4O-IcT" id="H2R-hm-JoB"/>
+                        <outlet property="toolBarBottomConstraint" destination="iVC-LA-S4C" id="khW-cG-yZ7"/>
                         <outlet property="wordBoxScrollView" destination="Ej4-6t-MYc" id="PLn-uY-BER"/>
                     </connections>
                 </viewController>

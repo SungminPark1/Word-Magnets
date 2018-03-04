@@ -9,23 +9,22 @@
 import UIKit
 
 class ViewController: UIViewController {
-    var wordSelector = WordSetSelector()
-    var wordSelectorIndex: Int = 0
-    var wordBoxLabelArray: Array<UILabel> = []
+    // poem related var
     var poemLabelArray: Array<UILabel> = []
-    
-    // navigation related var
     var poemTitle: String = "Poem Name"
     
-    // toolbar related var
+    // wordSelector related var
+    var wordSelector = WordSetSelector()
+    var wordBoxLabelArray: Array<UILabel> = []
     var isWordBoxCollapsed: Bool = true
     
     // Outlets
     @IBOutlet weak var backgroundImage: UIImageView!
     @IBOutlet weak var poemView: UIView!
+    @IBOutlet weak var wordBoxScrollView: UIScrollView!
     
     @IBOutlet weak var toolBar: UIToolbar!
-    @IBOutlet weak var wordBoxScrollView: UIScrollView!
+    @IBOutlet weak var toolBarBottomConstraint: NSLayoutConstraint!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,7 +34,7 @@ class ViewController: UIViewController {
         isWordBoxCollapsed = true
         wordBoxScrollView.contentSize.width = UIScreen.main.bounds.width
         
-        placeWordsInWordBox(words: wordSelector.getWordSet(index: wordSelectorIndex))
+        placeWordsInWordBox(words: wordSelector.getWordSet())
     }
     
     // MARK - Helper Functions -
@@ -89,14 +88,10 @@ class ViewController: UIViewController {
     }
     
     // clears all labels in array
-    // TO DO: Add animation before clearing
     func clearLableArray(labelArray: Array<UILabel>) {
-        var array = labelArray
         for label in labelArray {
             label.removeFromSuperview()
         }
-        
-        array.removeAll()
     }
     
     // MARK: - Override Functions -
@@ -105,18 +100,23 @@ class ViewController: UIViewController {
         if (segue.identifier == "showWordSetSegue") {
             let wordSetVC = segue.destination.childViewControllers[0] as! WordSetViewController
             wordSetVC.wordSets = wordSelector.wordSets
+        } else if (segue.identifier == "popupMenuSegue") {
+            // close the wordbox when opening the menu
+            if !isWordBoxCollapsed {
+                UIView.animate(withDuration: 0.5, animations: {
+                    self.toolBarBottomConstraint.constant = 0
+                    self.view.layoutIfNeeded()
+                    
+                }, completion: { (value: Bool) in
+                    self.isWordBoxCollapsed = true
+                    
+                })
+            }
         }
     }
     
-    // MARK - Objc functions -
+    // MARK: - Objc functions -
     // -----------------------
-    @objc func rotated() {
-        isWordBoxCollapsed = true
-        wordBoxScrollView.contentSize.width = UIScreen.main.bounds.width
-        print(UIScreen.main.bounds.width)
-        placeWordsInWordBox(words: wordSelector.getWordSet(index: wordSelectorIndex))
-    }
-    
     @objc func labelTapped(tapGesture: UITapGestureRecognizer) {
         let newLabel = UILabel()
         let tappedLabel = tapGesture.view as! UILabel
@@ -167,29 +167,23 @@ class ViewController: UIViewController {
         label.center = position
     }
     
-    // MARK - IBActions -
+    // MARK: - IBActions -
     // ------------------
     @IBAction func ShowWordBox(_ sender: Any) {
         let wordBoxCollapseDistance: CGFloat = wordBoxScrollView.frame.height
         
-        // scroll wordbox and wordSetToolbar up if collapsed
+        // scroll wordbox and wordSetToolbar up and down
         if isWordBoxCollapsed {
-            
             UIView.animate(withDuration: 0.5, animations: {
-                self.toolBar.frame.origin.y -= (wordBoxCollapseDistance)
-                self.wordBoxScrollView.frame.origin.y -= (wordBoxCollapseDistance)
-                
+                self.toolBarBottomConstraint.constant = wordBoxCollapseDistance
+                self.view.layoutIfNeeded()
             }, completion: { (value: Bool) in
                 self.isWordBoxCollapsed = false
-                
-                
             })
-        }
-            // scroll wordbox and wordSetToolbar down if not collapsed
-        else {
+        } else {
             UIView.animate(withDuration: 0.5, animations: {
-                self.toolBar.frame.origin.y += (wordBoxCollapseDistance)
-                self.wordBoxScrollView.frame.origin.y += (wordBoxCollapseDistance)
+                self.toolBarBottomConstraint.constant = 0
+                self.view.layoutIfNeeded()
                 
             }, completion: { (value: Bool) in
                 self.isWordBoxCollapsed = true
@@ -205,31 +199,34 @@ class ViewController: UIViewController {
             if wordSetVC.selectedWordSet == -1 {
                 return
             }
-            wordSelectorIndex = wordSetVC.selectedWordSet
             
             clearLableArray(labelArray: wordBoxLabelArray)
+            wordBoxLabelArray.removeAll()
             
-            placeWordsInWordBox(words: wordSelector.getWordSet(index: wordSelectorIndex))
+            wordSelector.selectedSet = wordSetVC.selectedWordSet
+            placeWordsInWordBox(words: wordSelector.getWordSet())
         } else if segue.identifier == "MenuTapped" {
             let menuPopupVC = segue.source as! MenuPopupViewController
             print("MenuPopup: \(menuPopupVC.selectedCell)")
             
             if menuPopupVC.selectedCell == "Edit Title" {
+                // edit the title of the poem if poemTitle is not empty
                 if menuPopupVC.poemTitle == "" {
                     return
                 }
             
                 self.poemTitle = menuPopupVC.poemTitle
                 self.navigationItem.title = poemTitle
-                
             } else if menuPopupVC.selectedCell == "Edit Background" {
+                // set background if selectedBackground is not nil
                 if (menuPopupVC.selectedBackground == nil) {
                     return
                 }
+                
                 backgroundImage.image = menuPopupVC.selectedBackground
-                self.view.sendSubview(toBack: backgroundImage)
             } else if menuPopupVC.selectedCell == "Clear Poem" {
                 clearLableArray(labelArray: poemLabelArray)
+                poemLabelArray.removeAll()
             }
         }
     }
