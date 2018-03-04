@@ -19,7 +19,6 @@ class WordSetViewController: UITableViewController {
         
         // removes footers from empty cells
         WordBoxTableView.tableFooterView = UIView(frame: .zero)
-        self.title = "Choose a Word Set"
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {

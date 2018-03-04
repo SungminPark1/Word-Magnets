@@ -32,7 +32,6 @@ class ViewController: UIViewController {
         navigationItem.title = poemTitle
         
         isWordBoxCollapsed = true
-        wordBoxScrollView.contentSize.width = UIScreen.main.bounds.width
         
         placeWordsInWordBox(words: wordSelector.getWordSet())
     }
@@ -40,18 +39,24 @@ class ViewController: UIViewController {
     // MARK - Helper Functions -
     // -------------------------
     func placeWordsInWordBox(words: Array<String>) {
-        let wordBoxWidth = wordBoxScrollView.contentSize.width
+        let wordBoxWidth = wordBoxScrollView.bounds.width
+        let minLabelWidth: CGFloat = 55
+        let minLabelHeight: CGFloat = 40
         let xPadding: CGFloat = 15
-        let yPadding: CGFloat = 50
+        let yPadding: CGFloat = minLabelHeight + 15
+        
         var xPlacement: CGFloat = 0
-        var yPlacement: CGFloat = 20
+        var yPlacement: CGFloat = 15
         
         for word in words {
             let wordLabel = UILabel()
+            
             wordLabel.textAlignment = .center
             wordLabel.text = word
             wordLabel.sizeToFit()
             wordLabel.backgroundColor = UIColor.white
+            
+            wordLabel.checkMinSize(minWidth: minLabelWidth, minHeight: minLabelHeight)
             
             // check if placement will not go offscreen
             if (xPlacement + xPadding + wordLabel.frame.width >= wordBoxWidth - xPadding) {
@@ -59,11 +64,9 @@ class ViewController: UIViewController {
                 yPlacement += yPadding
             }
             
-            // set x and y
-            let x: CGFloat = xPlacement + xPadding
-            let y: CGFloat = yPlacement
-            
-            wordLabel.checkSize(x: x, y: y, minWidth: 55, minHeight: 40)
+            // set x and y location
+            wordLabel.frame.origin.x = xPlacement + xPadding
+            wordLabel.frame.origin.y = yPlacement
             
             xPlacement += xPadding + wordLabel.frame.width
             
@@ -80,7 +83,7 @@ class ViewController: UIViewController {
         wordBoxScrollView.contentSize.height = yPlacement + yPadding
     }
     
-    // clears all labels in array
+    // clears all labels in view
     func clearLableArray(labelArray: Array<UILabel>) {
         for label in labelArray {
             label.removeFromSuperview()
@@ -118,8 +121,12 @@ class ViewController: UIViewController {
         newLabel.textAlignment = .center
         newLabel.sizeToFit()
         newLabel.backgroundColor = UIColor.white
-
-        newLabel.checkSize(x: 100, y: 100, minWidth: 55, minHeight: 40)
+        
+        // spawn label randomly at top of poemView
+        // TO DO: MAKE CLEANER
+        let x = CGFloat(arc4random_uniform(UInt32(poemView.frame.width - newLabel.frame.width - 30)) + 15)
+        
+        newLabel.checkMinSize(x: x, y: 20, minWidth: 55, minHeight: 40)
         
         // box shaddow
         newLabel.layer.shadowColor = UIColor.black.cgColor
@@ -131,21 +138,10 @@ class ViewController: UIViewController {
         newLabel.isUserInteractionEnabled = true
         
         let panGesture = UIPanGestureRecognizer(target: self, action: #selector(doPanGesture))
-        let rotationGesture = UIRotationGestureRecognizer(target: self, action: #selector(doRotationGesture))
-        
         newLabel.addGestureRecognizer(panGesture)
-        newLabel.addGestureRecognizer(rotationGesture)
         
         poemLabelArray.append(newLabel)
         poemView.addSubview(newLabel)
-    }
-    
-    @objc func doRotationGesture(rotationGesture: UIRotationGestureRecognizer) {
-        let label = rotationGesture.view as! UILabel
-        let rotation = rotationGesture.rotation
-        label.transform = CGAffineTransform(rotationAngle: rotation)
-        
-        print(rotationGesture.rotation)
     }
     
     @objc func doPanGesture(panGesture:UIPanGestureRecognizer) {
@@ -195,15 +191,14 @@ class ViewController: UIViewController {
             placeWordsInWordBox(words: wordSelector.getWordSet())
         } else if segue.identifier == "MenuTapped" {
             let menuPopupVC = segue.source as! MenuPopupViewController
-            print("MenuPopup: \(menuPopupVC.selectedCell)")
             
             if menuPopupVC.selectedCell == "Edit Title" {
                 // edit the title of the poem if poemTitle is not empty
-                if menuPopupVC.poemTitle == "" {
+                if menuPopupVC.alertTextField == "" {
                     return
                 }
             
-                self.poemTitle = menuPopupVC.poemTitle
+                self.poemTitle = menuPopupVC.alertTextField
                 self.navigationItem.title = poemTitle
             } else if menuPopupVC.selectedCell == "Edit Background" {
                 // set background if selectedBackground is not nil
@@ -212,6 +207,13 @@ class ViewController: UIViewController {
                 }
                 
                 backgroundImage.image = menuPopupVC.selectedBackground
+            } else if menuPopupVC.selectedCell == "Add Word" {
+                if menuPopupVC.alertTextField == "" {
+                    return
+                }
+                
+                wordSelector.addWordToCurrentSet(word: menuPopupVC.alertTextField)
+                placeWordsInWordBox(words: wordSelector.getWordSet())
             } else if menuPopupVC.selectedCell == "Clear Poem" {
                 clearLableArray(labelArray: poemLabelArray)
                 poemLabelArray.removeAll()
