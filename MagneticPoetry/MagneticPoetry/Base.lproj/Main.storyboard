@@ -59,13 +59,13 @@
                             <constraint firstItem="q2Y-XX-9b3" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="KQV-Ws-qst"/>
                             <constraint firstItem="22W-zo-dot" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="L7J-QU-UOA"/>
                             <constraint firstItem="q2Y-XX-9b3" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="NaS-rs-M7l"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Ej4-6t-MYc" secondAttribute="trailing" id="NvL-6i-gVf"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="22W-zo-dot" secondAttribute="bottom" constant="44" id="OGg-rX-7iG"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="q2Y-XX-9b3" secondAttribute="trailing" id="Peo-6U-Jbc"/>
+                            <constraint firstItem="Ej4-6t-MYc" firstAttribute="trailing" secondItem="BPh-4O-IcT" secondAttribute="trailing" id="R6z-A9-2H9"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="22W-zo-dot" secondAttribute="trailing" id="Yfo-np-jnB"/>
                             <constraint firstItem="BPh-4O-IcT" firstAttribute="bottom" secondItem="Ej4-6t-MYc" secondAttribute="top" id="dwo-RJ-1hb"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="BPh-4O-IcT" secondAttribute="bottom" id="iVC-LA-S4C"/>
-                            <constraint firstItem="Ej4-6t-MYc" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="v4X-3R-PFy"/>
+                            <constraint firstItem="Ej4-6t-MYc" firstAttribute="leading" secondItem="BPh-4O-IcT" secondAttribute="leading" id="j9n-fi-Hw8"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="q2Y-XX-9b3" secondAttribute="bottom" constant="44" id="wL5-wu-YMC"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>

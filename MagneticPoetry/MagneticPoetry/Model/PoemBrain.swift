@@ -57,26 +57,18 @@ class PoemBrain {
         movePoem(panGesture: panGesture, poemView: poemView)
     }
     
-    
-    func addToPoem(newLabel: UILabel, tapGesture: UITapGestureRecognizer, poemView: UIView) {
+    // MARK - Helper Functions -
+    // -------------------------
+    func addToPoem(tapGesture: UITapGestureRecognizer, poemView: UIView) {
         let tappedLabel = tapGesture.view as! UILabel
+        let newLabel = UILabel()
         
-        newLabel.text = tappedLabel.text
-        newLabel.textAlignment = .center
-        newLabel.sizeToFit()
-        newLabel.backgroundColor = UIColor.white
+        newLabel.setText(text: tappedLabel.text!, fontSize: tappedLabel.font.pointSize)
         
-        // spawn label randomly at top of poemView
-        // TO DO: MAKE CLEANER
         let x = CGFloat(arc4random_uniform(UInt32(poemView.frame.width - newLabel.frame.width - 30)) + 15)
+        newLabel.checkMinSize(x: x, y: 20, minWidth: tappedLabel.frame.width, minHeight: tappedLabel.frame.height)
         
-        newLabel.checkMinSize(x: x, y: 20, minWidth: 55, minHeight: 40)
-        
-        // box shaddow
-        newLabel.layer.shadowColor = UIColor.black.cgColor
-        newLabel.layer.shadowOpacity = 0.75
-        newLabel.layer.shadowOffset = CGSize(width: 1, height: 3)
-        newLabel.layer.masksToBounds = false
+        newLabel.addShadow()
         
         // add gesture events to label
         newLabel.isUserInteractionEnabled = true
@@ -107,16 +99,13 @@ class PoemBrain {
     }
     
     func placeWordsInPoem(poemView: UIView) {
-        for word in currentPoem {
-            word.layer.shadowColor = UIColor.black.cgColor
-            word.layer.shadowOpacity = 0.75
-            word.layer.shadowOffset = CGSize(width: 1, height: 3)
-            word.layer.masksToBounds = false
+        for wordLabel in currentPoem {
+            wordLabel.addShadow()
             
             let panGesture = UIPanGestureRecognizer(target: self, action: #selector(doPanGesture))
-            word.addGestureRecognizer(panGesture)
+            wordLabel.addGestureRecognizer(panGesture)
             
-            poemView.addSubview(word)
+            poemView.addSubview(wordLabel)
         }
     }
     

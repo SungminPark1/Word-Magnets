@@ -43,7 +43,9 @@ class MenuPopupViewController: UIViewController, UINavigationControllerDelegate 
             textField.placeholder = placeHolder
         })
         
-        alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.destructive, handler: nil))
+        alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.destructive, handler: { (action: UIAlertAction!) in
+            self.exitViewWithSegue()
+        }))
         alert.addAction(UIAlertAction(title: "Done", style: UIAlertActionStyle.default, handler: { (action: UIAlertAction!) in
             let firstTextField = alert.textFields![0] as UITextField
             
@@ -97,14 +99,13 @@ extension MenuPopupViewController: UITableViewDelegate {
             present(imagePickerController, animated: true, completion: nil)
         } else if menuCells[indexPath.row] == "Share" {
             let image = self.presentingViewController?.view.takeSnapshot()
-            let textToShare = "Share Text"
-            let igmWebsite = NSURL(string: "http://igm.rit.edu/")
-            let objectsToShare: [AnyObject] = [textToShare as AnyObject, igmWebsite!, image!]
+            let textToShare = "Look at the poem I made using Magnetic Poetry!"
+            let objectsToShare: [AnyObject] = [textToShare as AnyObject, image!]
             let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
             activityVC.excludedActivityTypes = [UIActivityType.print]
             
             // specific for ipad
-            if (UIDevice.current.userInterfaceIdiom == UIUserInterfaceIdiom.pad) {
+            if (isIPad) {
                 let popoverMenuViewController = activityVC.popoverPresentationController
                 popoverMenuViewController?.sourceView = self.view
                 popoverMenuViewController?.permittedArrowDirections = .any

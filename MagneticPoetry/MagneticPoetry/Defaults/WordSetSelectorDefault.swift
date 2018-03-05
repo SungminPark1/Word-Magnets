@@ -75,18 +75,15 @@ class WordSetSelectorModelUserDefaults: WordSetSelectorModel {
     
     func save() {
         defaults.set(wordSetIndex, forKey: kWordSetIndexKey)
-        print("word set saved")
     }
     
     func load() {
         // loads the wordSetIndex
         if let wordSetIndex = defaults.value(forKey: kWordSetIndexKey) as? Int {
             self.wordSetIndex = wordSetIndex
-        }
-        else {
+        } else {
             self.wordSetIndex = Constants.WordSetSelectorModel.defaultWordSet
         }
-        print("Word set loaded")
     }
     
     

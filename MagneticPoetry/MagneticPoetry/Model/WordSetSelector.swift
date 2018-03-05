@@ -116,7 +116,6 @@ class WordSetSelector {
     
     
     @objc func applicationWillEnterBackground(_ application: UIApplication) {
-        print("about to save word set")
         dataModel.save()
     }
     

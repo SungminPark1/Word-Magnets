@@ -11,7 +11,6 @@ import UIKit
 
 // Swift constants
 struct Constants {
-    
     struct PoemModel {
         static let defaultPoem: Array<UILabel> = []
         static let defaultTitle: String = "New Poem"

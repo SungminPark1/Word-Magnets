@@ -6,7 +6,6 @@
 //  Copyright © 2018 Sungmin Park and Ian Oliver. All rights reserved.
 //
 
-import Foundation
 import UIKit
 
 extension UIView {

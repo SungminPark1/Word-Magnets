@@ -8,7 +8,14 @@
 
 import UIKit
 
+var isIPad: Bool = false
+
 class ViewController: UIViewController {
+    // label related
+    var minLabelWidth: CGFloat = 55
+    var minLabelHeight: CGFloat = 40
+    var labelFontSize: CGFloat = 17
+    
     // poem related var
     var poemBrain = PoemBrain()
     
@@ -25,8 +32,24 @@ class ViewController: UIViewController {
     @IBOutlet weak var toolBar: UIToolbar!
     @IBOutlet weak var toolBarBottomConstraint: NSLayoutConstraint!
     
+    // MARK: - De Init -
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
+    
+    // MARK: - Override Functions -
+    // ----------------------------
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if (UIDevice.current.userInterfaceIdiom == UIUserInterfaceIdiom.pad) {
+            isIPad = true
+            
+            // increase label size if iPad
+            minLabelWidth = 75
+            minLabelHeight = 60
+            labelFontSize = 22
+        }
         
         navigationItem.title = poemBrain.poemTitle
         
@@ -36,31 +59,45 @@ class ViewController: UIViewController {
         
         placeWordsInWordBox(words: wordSelector.getWordSet())
     }
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if (segue.identifier == "showWordSetSegue") {
+            let wordSetVC = segue.destination.childViewControllers[0] as! WordSetViewController
+            wordSetVC.wordSets = wordSelector.wordSets
+        } else if (segue.identifier == "popupMenuSegue") {
+            // close the wordbox when opening the menu
+            if !isWordBoxCollapsed {
+                UIView.animate(withDuration: 0.5, animations: {
+                    self.toolBarBottomConstraint.constant = 0
+                    self.view.layoutIfNeeded()
+                    
+                }, completion: { (value: Bool) in
+                    self.isWordBoxCollapsed = true
+                    
+                })
+            }
+        }
+    }
     
-    deinit {
-        NotificationCenter.default.removeObserver(self)
+    // MARK: - Objc functions -
+    // -----------------------
+    @objc func labelTapped(tapGesture: UITapGestureRecognizer) {
+        poemBrain.addToPoem(tapGesture: tapGesture, poemView: poemView)
     }
     
     // MARK - Helper Functions -
     // -------------------------
     func placeWordsInWordBox(words: Array<String>) {
-        let wordBoxWidth = wordBoxScrollView.bounds.width
-        let minLabelWidth: CGFloat = 55
-        let minLabelHeight: CGFloat = 40
+        let wordBoxWidth = UIScreen.main.bounds.width
         let xPadding: CGFloat = 15
         let yPadding: CGFloat = minLabelHeight + 15
-        
         var xPlacement: CGFloat = 0
         var yPlacement: CGFloat = 15
         
         for word in words {
             let wordLabel = UILabel()
             
-            wordLabel.textAlignment = .center
-            wordLabel.text = word
-            wordLabel.sizeToFit()
-            wordLabel.backgroundColor = UIColor.white
-            
+            wordLabel.setText(text: word, fontSize: labelFontSize)
             wordLabel.checkMinSize(minWidth: minLabelWidth, minHeight: minLabelHeight)
             
             // check if placement will not go offscreen
@@ -95,36 +132,6 @@ class ViewController: UIViewController {
         }
     }
     
-    // MARK: - Override Functions -
-    // ----------------------------
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if (segue.identifier == "showWordSetSegue") {
-            let wordSetVC = segue.destination.childViewControllers[0] as! WordSetViewController
-            wordSetVC.wordSets = wordSelector.wordSets
-        } else if (segue.identifier == "popupMenuSegue") {
-            // close the wordbox when opening the menu
-            if !isWordBoxCollapsed {
-                UIView.animate(withDuration: 0.5, animations: {
-                    self.toolBarBottomConstraint.constant = 0
-                    self.view.layoutIfNeeded()
-                    
-                }, completion: { (value: Bool) in
-                    self.isWordBoxCollapsed = true
-                    
-                })
-            }
-        }
-    }
-    
-    // MARK: - Objc functions -
-    // -----------------------
-    @objc func labelTapped(tapGesture: UITapGestureRecognizer) {
-        let newLabel = UILabel()
-        
-        poemBrain.addToPoem(newLabel: newLabel, tapGesture: tapGesture, poemView: poemView)
-    }
-    
-    
     // MARK: - IBActions -
     // ------------------
     @IBAction func ShowWordBox(_ sender: Any) {
@@ -145,7 +152,6 @@ class ViewController: UIViewController {
                 
             }, completion: { (value: Bool) in
                 self.isWordBoxCollapsed = true
-                
             })
         }
     }
@@ -167,7 +173,7 @@ class ViewController: UIViewController {
             let menuPopupVC = segue.source as! MenuPopupViewController
             
             if menuPopupVC.selectedCell == "Edit Title" {
-                // edit the title of the poem if poemTitle is not empty
+                // edit the title of the poem if alertTextField is not empty
                 if menuPopupVC.alertTextField == "" {
                     return
                 }
@@ -182,6 +188,7 @@ class ViewController: UIViewController {
                 
                 backgroundImage.image = menuPopupVC.selectedBackground
             } else if menuPopupVC.selectedCell == "Add Word" {
+                // add the word to current word set if alertTextField is not empty
                 if menuPopupVC.alertTextField == "" {
                     return
                 }
@@ -189,6 +196,7 @@ class ViewController: UIViewController {
                 wordSelector.addWordToCurrentSet(word: menuPopupVC.alertTextField)
                 placeWordsInWordBox(words: wordSelector.getWordSet())
             } else if menuPopupVC.selectedCell == "Clear Poem" {
+                // remove currentPoem from view and clear currentPoem
                 removeLabelFromView(labelArray: poemBrain.currentPoem)
                 poemBrain.clearPoem()
             }

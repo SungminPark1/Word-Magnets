@@ -39,8 +39,8 @@ class PoemModelUserDefaults: PoemModel {
     func save() {
         // encode the UIlabel array
         let encodedLabel = NSKeyedArchiver.archivedData(withRootObject: currentPoem)
-        defaults.set(encodedLabel, forKey: kCurrentPoem)
         
+        defaults.set(encodedLabel, forKey: kCurrentPoem)
         defaults.set(poemTitle, forKey: kPoemTitle)
     }
     
@@ -49,20 +49,15 @@ class PoemModelUserDefaults: PoemModel {
             if let decodedPoem = NSKeyedUnarchiver.unarchiveObject(with: decoded) as! Array<UILabel>? {
                 
                 self.currentPoem = decodedPoem
-            }
-            else {
-                print("loaded default poem")
+            } else {
                 self.currentPoem = Constants.PoemModel.defaultPoem
             }
             
             if let poemTitle = defaults.value(forKey: kPoemTitle) as? String {
                 self.poemTitle = poemTitle
-            }
-            else {
+            } else {
                 self.poemTitle = Constants.PoemModel.defaultTitle
             }
         }
-            
-        print("poem loaded")
     }
 }

@@ -9,11 +9,12 @@
 import UIKit
 
 class WordSetViewController: UITableViewController {
-    
     @IBOutlet var WordBoxTableView: UITableView!
     var selectedWordSet: Int = -1
     var wordSets:Array<String> = []
     
+    // MARK: - Override Functions -
+    // ----------------------------
     override func viewDidLoad() {
         super.viewDidLoad()
         
