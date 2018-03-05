@@ -89,12 +89,12 @@ extension MenuPopupViewController: UITableViewDelegate {
         if  menuCells[indexPath.row] == "Edit Title" {
             self.createTextBoxAlert(title: "Enter poem's name", placeHolder: "New Title")
         } else if menuCells[indexPath.row] == "Edit Background" {
-            let controller = UIImagePickerController()
+            let imagePickerController = UIImagePickerController()
             
-            controller.delegate = self
-            controller.sourceType = .photoLibrary
+            imagePickerController.delegate = self
+            imagePickerController.sourceType = .photoLibrary
             
-            present(controller, animated: true, completion: nil)
+            present(imagePickerController, animated: true, completion: nil)
         } else if menuCells[indexPath.row] == "Share" {
             let image = self.presentingViewController?.view.takeSnapshot()
             let textToShare = "Share Text"
