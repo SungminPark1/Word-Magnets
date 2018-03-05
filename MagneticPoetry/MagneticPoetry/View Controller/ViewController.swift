@@ -42,7 +42,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        assert(poemBrain != nil, "CounterBrain must be set before using property via dependency injection")
+        assert(poemBrain != nil, "PoemBrain must be set before using property via dependency injection")
         
         if (UIDevice.current.userInterfaceIdiom == UIUserInterfaceIdiom.pad) {
             isIPad = true
