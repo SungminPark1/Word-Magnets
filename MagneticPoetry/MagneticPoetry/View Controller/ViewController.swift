@@ -9,9 +9,10 @@
 import UIKit
 
 class ViewController: UIViewController {
+
+    
     // poem related var
-    var poemLabelArray: Array<UILabel> = []
-    var poemTitle: String = "Poem Name"
+    var poemBrain = PoemBrain()
     
     // wordSelector related var
     var wordSelector = WordSetSelector()
@@ -29,11 +30,17 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navigationItem.title = poemTitle
+        navigationItem.title = poemBrain.poemTitle
+        
+        poemBrain.placeWordsInPoem(poemView: self.poemView)
         
         isWordBoxCollapsed = true
         
         placeWordsInWordBox(words: wordSelector.getWordSet())
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
     }
     
     // MARK - Helper Functions -
@@ -115,41 +122,10 @@ class ViewController: UIViewController {
     // -----------------------
     @objc func labelTapped(tapGesture: UITapGestureRecognizer) {
         let newLabel = UILabel()
-        let tappedLabel = tapGesture.view as! UILabel
         
-        newLabel.text = tappedLabel.text
-        newLabel.textAlignment = .center
-        newLabel.sizeToFit()
-        newLabel.backgroundColor = UIColor.white
-        
-        // spawn label randomly at top of poemView
-        // TO DO: MAKE CLEANER
-        let x = CGFloat(arc4random_uniform(UInt32(poemView.frame.width - newLabel.frame.width - 30)) + 15)
-        
-        newLabel.checkMinSize(x: x, y: 20, minWidth: 55, minHeight: 40)
-        
-        // box shaddow
-        newLabel.layer.shadowColor = UIColor.black.cgColor
-        newLabel.layer.shadowOpacity = 0.75
-        newLabel.layer.shadowOffset = CGSize(width: 1, height: 3)
-        newLabel.layer.masksToBounds = false
-        
-        // add gesture events to label
-        newLabel.isUserInteractionEnabled = true
-        
-        let panGesture = UIPanGestureRecognizer(target: self, action: #selector(doPanGesture))
-        newLabel.addGestureRecognizer(panGesture)
-        
-        poemLabelArray.append(newLabel)
-        poemView.addSubview(newLabel)
+        poemBrain.addToPoem(newLabel: newLabel, tapGesture: tapGesture, poemView: poemView)
     }
     
-    @objc func doPanGesture(panGesture:UIPanGestureRecognizer) {
-        let label = panGesture.view as! UILabel
-        let position = panGesture.location(in: poemView)
-        
-        label.center = position
-    }
     
     // MARK: - IBActions -
     // ------------------
@@ -198,8 +174,8 @@ class ViewController: UIViewController {
                     return
                 }
             
-                self.poemTitle = menuPopupVC.alertTextField
-                self.navigationItem.title = poemTitle
+                poemBrain.changePoemTitle(textField: menuPopupVC.alertTextField)
+                self.navigationItem.title = poemBrain.poemTitle
             } else if menuPopupVC.selectedCell == "Edit Background" {
                 // set background if selectedBackground is not nil
                 if (menuPopupVC.selectedBackground == nil) {
@@ -215,10 +191,11 @@ class ViewController: UIViewController {
                 wordSelector.addWordToCurrentSet(word: menuPopupVC.alertTextField)
                 placeWordsInWordBox(words: wordSelector.getWordSet())
             } else if menuPopupVC.selectedCell == "Clear Poem" {
-                clearLableArray(labelArray: poemLabelArray)
-                poemLabelArray.removeAll()
+                clearLableArray(labelArray: poemBrain.currentPoem)
+                poemBrain.clearPoem()
             }
         }
     }
 }
+
 

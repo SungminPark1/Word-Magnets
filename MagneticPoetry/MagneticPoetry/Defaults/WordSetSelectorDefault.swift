@@ -25,12 +25,6 @@ protocol WordSetSelectorModel {
 
 let kWordSetIndexKey = "kWordSetIndexKey"
 
-// swift constants
-struct Constants {
-    struct WordSetSelectorModel {
-        static let defaultWordSet: Int = 0
-    }
-}
 
 class WordSetSelectorModelUserDefaults: WordSetSelectorModel {
     var emojis: Array<String>
@@ -81,7 +75,7 @@ class WordSetSelectorModelUserDefaults: WordSetSelectorModel {
     
     func save() {
         defaults.set(wordSetIndex, forKey: kWordSetIndexKey)
-        print(#function)
+        print("word set saved")
     }
     
     func load() {
@@ -92,6 +86,7 @@ class WordSetSelectorModelUserDefaults: WordSetSelectorModel {
         else {
             self.wordSetIndex = Constants.WordSetSelectorModel.defaultWordSet
         }
+        print("Word set loaded")
     }
     
     

@@ -18,6 +18,9 @@
 		3B90B90A203F3D4400396508 /* MenuPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B90B909203F3D4400396508 /* MenuPopupViewController.swift */; };
 		3BBD571E2045D08900377202 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BBD571D2045D08900377202 /* UIViewExtension.swift */; };
 		3F242EA2204CA3EE001E669F /* WordSetSelectorDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F242EA1204CA3EE001E669F /* WordSetSelectorDefault.swift */; };
+		3F242EA5204CBB4A001E669F /* PoemDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F242EA4204CBB4A001E669F /* PoemDefaults.swift */; };
+		3F242EA7204CC75B001E669F /* PoemBrain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F242EA6204CC75B001E669F /* PoemBrain.swift */; };
+		3F242EA9204CDA50001E669F /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F242EA8204CDA50001E669F /* Constants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +37,9 @@
 		3B90B909203F3D4400396508 /* MenuPopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuPopupViewController.swift; sourceTree = "<group>"; };
 		3BBD571D2045D08900377202 /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 		3F242EA1204CA3EE001E669F /* WordSetSelectorDefault.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordSetSelectorDefault.swift; sourceTree = "<group>"; };
+		3F242EA4204CBB4A001E669F /* PoemDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoemDefaults.swift; sourceTree = "<group>"; };
+		3F242EA6204CC75B001E669F /* PoemBrain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoemBrain.swift; sourceTree = "<group>"; };
+		3F242EA8204CDA50001E669F /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +89,7 @@
 			isa = PBXGroup;
 			children = (
 				3B90B8DE2038D8BD00396508 /* WordSetSelector.swift */,
+				3F242EA6204CC75B001E669F /* PoemBrain.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -110,6 +117,8 @@
 			isa = PBXGroup;
 			children = (
 				3F242EA1204CA3EE001E669F /* WordSetSelectorDefault.swift */,
+				3F242EA4204CBB4A001E669F /* PoemDefaults.swift */,
+				3F242EA8204CDA50001E669F /* Constants.swift */,
 			);
 			path = Defaults;
 			sourceTree = "<group>";
@@ -187,12 +196,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				3BBD571E2045D08900377202 /* UIViewExtension.swift in Sources */,
+				3F242EA9204CDA50001E669F /* Constants.swift in Sources */,
 				3B90B8DF2038D8BD00396508 /* WordSetSelector.swift in Sources */,
 				3B90B90A203F3D4400396508 /* MenuPopupViewController.swift in Sources */,
 				3B90B8DC2038D67D00396508 /* WordSetViewController.swift in Sources */,
+				3F242EA7204CC75B001E669F /* PoemBrain.swift in Sources */,
 				3B820F5A204BF8E7002CA4BF /* UILabelExtension.swift in Sources */,
 				3B90B8CA2038D33D00396508 /* ViewController.swift in Sources */,
 				3B90B8C82038D33D00396508 /* AppDelegate.swift in Sources */,
+				3F242EA5204CBB4A001E669F /* PoemDefaults.swift in Sources */,
 				3F242EA2204CA3EE001E669F /* WordSetSelectorDefault.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
