@@ -17,7 +17,7 @@ class ViewController: UIViewController {
     var labelFontSize: CGFloat = 17
     
     // poem related var
-    var poemBrain = PoemBrain()
+    var poemBrain: PoemBrain!
     
     // wordSelector related var
     var wordSelector = WordSetSelector()
@@ -41,6 +41,8 @@ class ViewController: UIViewController {
     // ----------------------------
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        assert(poemBrain != nil, "CounterBrain must be set before using property via dependency injection")
         
         if (UIDevice.current.userInterfaceIdiom == UIUserInterfaceIdiom.pad) {
             isIPad = true

@@ -53,8 +53,17 @@ class PoemBrain {
         dataModel.save()
     }
     
-    @objc func doPanGesture(panGesture:UIPanGestureRecognizer, poemView: UIView) {
-        movePoem(panGesture: panGesture, poemView: poemView)
+    @objc func doPanGesture(panGesture: UIPanGestureRecognizer) {
+        let label = panGesture.view as! UILabel
+        let view = label.superview
+
+        view?.bringSubview(toFront: label)
+
+        let translation = panGesture.translation(in: view)
+        label.center = CGPoint(x: label.center.x + translation.x, y: label.center.y + translation.y)
+        panGesture.setTranslation(CGPoint.zero, in: view)
+        
+        //dataModel.save()
     }
     
     // MARK - Helper Functions -
@@ -83,18 +92,6 @@ class PoemBrain {
     
     func clearPoem() {
         currentPoem.removeAll()
-        dataModel.save()
-    }
-    
-    func movePoem(panGesture: UIPanGestureRecognizer, poemView: UIView) {
-        let label = panGesture.view as! UILabel
-        
-        poemView.bringSubview(toFront: label)
-        
-        let translation = panGesture.translation(in: poemView)
-        label.center = CGPoint(x: label.center.x + translation.x, y: label.center.y + translation.y)
-        panGesture.setTranslation(CGPoint.zero, in: poemView)
-        
         dataModel.save()
     }
     

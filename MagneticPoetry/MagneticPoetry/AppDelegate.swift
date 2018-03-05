@@ -17,7 +17,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
-        print(#function)
+        if let navController = window?.rootViewController as? UINavigationController {
+            if let viewController = navController.viewControllers.first as? ViewController {
+                let poemBrain = PoemBrain()
+                
+                viewController.poemBrain = poemBrain
+            }
+        }
 
         
 
