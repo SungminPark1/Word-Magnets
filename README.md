@@ -5,6 +5,7 @@ A interactive word based app.
 
 <a href="#Checkpoint-1">Checkpoint 1</a>  
 <a href="#Checkpoint-2">Checkpoint 2</a>  
+<a href="#Final-Checkpoint">Final Checkpoint</a>  
 
 
 ## Proposed Features  
@@ -62,4 +63,29 @@ From this screen users will be able to select different word sets. Currently jus
 
 <a href="#Magnetic-Poetry">To Top</a>  
 
-## Final Checkpoint
+## Final Checkpoint  
+
+### App State  
+User is able to select words from a collapsible word box and change between various word sets.  
+
+![Checkpoint 1 - App State ](Assets/screenShots/checkpoint-3_wordBox.png)
+
+User is able to use the menu to edit the poem title, background image, share to social media, add new words, or clear their poem.  
+
+![Checkpoint 1 - App State ](Assets/screenShots/checkpoint-3_menu.png)
+
+### New Features  
+* collapsible Word Box
+* Able to Edit Poem Title
+* Able to Edit Background
+* Share Feature
+* Able to Add Custom Words
+* Able to Clear Poem
+* New Word Sets
+
+### Updated Features  
+* Smoother label drag
+* App Icon Updated
+* Launch Screen Updated
+
+<a href="#Magnetic-Poetry">To Top</a>  
