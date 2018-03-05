@@ -17,8 +17,6 @@ class PoemBrain {
     private var dataModel: PoemModel
     var delegate: PoemBrainDelegate!
     
-    // IVARS
-    // -------
     var currentPoem: Array<UILabel> {
         get {
             return dataModel.currentPoem
@@ -28,7 +26,6 @@ class PoemBrain {
             delegate?.poemBrain(didChange: self, currentPoem: newValue, poemTitle: self.poemTitle)
         }
     }
-    
     var poemTitle: String {
         get {
             return dataModel.poemTitle
@@ -50,10 +47,9 @@ class PoemBrain {
         NotificationCenter.default.removeObserver(self)
     }
     
-    
+    // MARK: - Objc functions -
+    // -----------------------
     @objc func applicationWillEnterBackground(_ application: UIApplication) {
-        
-        print("About to Save Poem")
         dataModel.save()
     }
     
@@ -99,10 +95,10 @@ class PoemBrain {
     }
     
     func movePoem(panGesture: UIPanGestureRecognizer, poemView: UIView) {
-        
         let label = panGesture.view as! UILabel
         
         poemView.bringSubview(toFront: label)
+        
         let translation = panGesture.translation(in: poemView)
         label.center = CGPoint(x: label.center.x + translation.x, y: label.center.y + translation.y)
         panGesture.setTranslation(CGPoint.zero, in: poemView)

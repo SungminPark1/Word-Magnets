@@ -45,24 +45,24 @@ class PoemModelUserDefaults: PoemModel {
     }
     
     func load() {
-        let decoded  = UserDefaults.standard.object(forKey: kCurrentPoem) as! Data
-        
-        if let decodedPoem = NSKeyedUnarchiver.unarchiveObject(with: decoded) as! Array<UILabel>? {
+        if let decoded = UserDefaults.standard.object(forKey: kCurrentPoem) as! Data? {
+            if let decodedPoem = NSKeyedUnarchiver.unarchiveObject(with: decoded) as! Array<UILabel>? {
+                
+                self.currentPoem = decodedPoem
+            }
+            else {
+                print("loaded default poem")
+                self.currentPoem = Constants.PoemModel.defaultPoem
+            }
             
-            self.currentPoem = decodedPoem
+            if let poemTitle = defaults.value(forKey: kPoemTitle) as? String {
+                self.poemTitle = poemTitle
+            }
+            else {
+                self.poemTitle = Constants.PoemModel.defaultTitle
+            }
         }
-        else {
-            print("loaded default poem")
-            self.currentPoem = Constants.PoemModel.defaultPoem
-        }
-        
-        if let poemTitle = defaults.value(forKey: kPoemTitle) as? String {
-            self.poemTitle = poemTitle
-        }
-        else {
-            self.poemTitle = Constants.PoemModel.defaultTitle
-        }
-        
+            
         print("poem loaded")
     }
 }

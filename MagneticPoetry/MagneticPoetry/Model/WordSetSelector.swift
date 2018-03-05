@@ -13,8 +13,6 @@ protocol WordSetSelectorDelegate {
 }
 
 class WordSetSelector {
-    // IVARS
-    // -----------------
     private var dataModel: WordSetSelectorModel
     var delegate: WordSetSelectorDelegate?
     

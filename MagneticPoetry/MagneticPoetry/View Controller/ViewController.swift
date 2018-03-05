@@ -9,8 +9,6 @@
 import UIKit
 
 class ViewController: UIViewController {
-
-    
     // poem related var
     var poemBrain = PoemBrain()
     
@@ -90,8 +88,8 @@ class ViewController: UIViewController {
         wordBoxScrollView.contentSize.height = yPlacement + yPadding
     }
     
-    // clears all labels in view
-    func clearLableArray(labelArray: Array<UILabel>) {
+    // remove all labels in view
+    func removeLabelFromView(labelArray: Array<UILabel>) {
         for label in labelArray {
             label.removeFromSuperview()
         }
@@ -160,7 +158,7 @@ class ViewController: UIViewController {
                 return
             }
             
-            clearLableArray(labelArray: wordBoxLabelArray)
+            removeLabelFromView(labelArray: wordBoxLabelArray)
             wordBoxLabelArray.removeAll()
             
             wordSelector.selectedSetIndex = wordSetVC.selectedWordSet
@@ -191,7 +189,7 @@ class ViewController: UIViewController {
                 wordSelector.addWordToCurrentSet(word: menuPopupVC.alertTextField)
                 placeWordsInWordBox(words: wordSelector.getWordSet())
             } else if menuPopupVC.selectedCell == "Clear Poem" {
-                clearLableArray(labelArray: poemBrain.currentPoem)
+                removeLabelFromView(labelArray: poemBrain.currentPoem)
                 poemBrain.clearPoem()
             }
         }
