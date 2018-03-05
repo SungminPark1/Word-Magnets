@@ -62,8 +62,6 @@ class PoemBrain {
         let translation = panGesture.translation(in: view)
         label.center = CGPoint(x: label.center.x + translation.x, y: label.center.y + translation.y)
         panGesture.setTranslation(CGPoint.zero, in: view)
-        
-        //dataModel.save()
     }
     
     // MARK - Helper Functions -

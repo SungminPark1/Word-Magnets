@@ -75,13 +75,15 @@ User is able to use the menu to edit the poem title, background image, share to 
 ![Checkpoint 1 - App State ](Assets/screenShots/checkpoint-3_menu.png)
 
 ### New Features  
-* collapsible Word Box
+* Collapsible Word Box
 * Able to Edit Poem Title
 * Able to Edit Background
 * Share Feature
 * Able to Add Custom Words
 * Able to Clear Poem
 * New Word Sets
+* Poem Title and Poem Saves
+* Current Selected Word Set Saves on exit
 
 ### Updated Features  
 * Smoother label drag
