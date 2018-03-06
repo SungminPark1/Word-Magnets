@@ -37,7 +37,6 @@ class PoemBrain {
     }
     
     init(dataModel: PoemModel = PoemModelUserDefaults()) {
-        print(#function)
         self.dataModel = dataModel
         
         NotificationCenter.default.addObserver(self, selector: #selector(applicationWillEnterBackground(_:)), name: NSNotification.Name.UIApplicationDidEnterBackground, object: nil)

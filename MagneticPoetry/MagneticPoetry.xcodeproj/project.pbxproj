@@ -14,11 +14,11 @@
 		3B90B8CF2038D33D00396508 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3B90B8CE2038D33D00396508 /* Assets.xcassets */; };
 		3B90B8D22038D33D00396508 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3B90B8D02038D33D00396508 /* LaunchScreen.storyboard */; };
 		3B90B8DC2038D67D00396508 /* WordSetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B90B8DB2038D67D00396508 /* WordSetViewController.swift */; };
-		3B90B8DF2038D8BD00396508 /* WordSetSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B90B8DE2038D8BD00396508 /* WordSetSelector.swift */; };
+		3B90B8DF2038D8BD00396508 /* WordSetSelectorBrain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B90B8DE2038D8BD00396508 /* WordSetSelectorBrain.swift */; };
 		3B90B90A203F3D4400396508 /* MenuPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B90B909203F3D4400396508 /* MenuPopupViewController.swift */; };
 		3BBD571E2045D08900377202 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BBD571D2045D08900377202 /* UIViewExtension.swift */; };
-		3F242EA2204CA3EE001E669F /* WordSetSelectorDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F242EA1204CA3EE001E669F /* WordSetSelectorDefault.swift */; };
-		3F242EA5204CBB4A001E669F /* PoemDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F242EA4204CBB4A001E669F /* PoemDefaults.swift */; };
+		3F242EA2204CA3EE001E669F /* WordSetSelectorModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F242EA1204CA3EE001E669F /* WordSetSelectorModel.swift */; };
+		3F242EA5204CBB4A001E669F /* PoemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F242EA4204CBB4A001E669F /* PoemModel.swift */; };
 		3F242EA7204CC75B001E669F /* PoemBrain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F242EA6204CC75B001E669F /* PoemBrain.swift */; };
 		3F242EA9204CDA50001E669F /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F242EA8204CDA50001E669F /* Constants.swift */; };
 /* End PBXBuildFile section */
@@ -33,11 +33,11 @@
 		3B90B8D12038D33D00396508 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3B90B8D32038D33D00396508 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3B90B8DB2038D67D00396508 /* WordSetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordSetViewController.swift; sourceTree = "<group>"; };
-		3B90B8DE2038D8BD00396508 /* WordSetSelector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordSetSelector.swift; sourceTree = "<group>"; };
+		3B90B8DE2038D8BD00396508 /* WordSetSelectorBrain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordSetSelectorBrain.swift; sourceTree = "<group>"; };
 		3B90B909203F3D4400396508 /* MenuPopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuPopupViewController.swift; sourceTree = "<group>"; };
 		3BBD571D2045D08900377202 /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
-		3F242EA1204CA3EE001E669F /* WordSetSelectorDefault.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordSetSelectorDefault.swift; sourceTree = "<group>"; };
-		3F242EA4204CBB4A001E669F /* PoemDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoemDefaults.swift; sourceTree = "<group>"; };
+		3F242EA1204CA3EE001E669F /* WordSetSelectorModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordSetSelectorModel.swift; sourceTree = "<group>"; };
+		3F242EA4204CBB4A001E669F /* PoemModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoemModel.swift; sourceTree = "<group>"; };
 		3F242EA6204CC75B001E669F /* PoemBrain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoemBrain.swift; sourceTree = "<group>"; };
 		3F242EA8204CDA50001E669F /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -72,7 +72,7 @@
 		3B90B8C62038D33D00396508 /* MagneticPoetry */ = {
 			isa = PBXGroup;
 			children = (
-				3F242EA3204CBA71001E669F /* Defaults */,
+				3F242EA3204CBA71001E669F /* Constants */,
 				3BBD571C2045D07000377202 /* Extensions */,
 				3B90B8DA2038D35300396508 /* View Controller */,
 				3B90B8D92038D34E00396508 /* Model */,
@@ -88,8 +88,10 @@
 		3B90B8D92038D34E00396508 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				3B90B8DE2038D8BD00396508 /* WordSetSelector.swift */,
 				3F242EA6204CC75B001E669F /* PoemBrain.swift */,
+				3F242EA4204CBB4A001E669F /* PoemModel.swift */,
+				3B90B8DE2038D8BD00396508 /* WordSetSelectorBrain.swift */,
+				3F242EA1204CA3EE001E669F /* WordSetSelectorModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -113,14 +115,12 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
-		3F242EA3204CBA71001E669F /* Defaults */ = {
+		3F242EA3204CBA71001E669F /* Constants */ = {
 			isa = PBXGroup;
 			children = (
-				3F242EA1204CA3EE001E669F /* WordSetSelectorDefault.swift */,
-				3F242EA4204CBB4A001E669F /* PoemDefaults.swift */,
 				3F242EA8204CDA50001E669F /* Constants.swift */,
 			);
-			path = Defaults;
+			path = Constants;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -197,15 +197,15 @@
 			files = (
 				3BBD571E2045D08900377202 /* UIViewExtension.swift in Sources */,
 				3F242EA9204CDA50001E669F /* Constants.swift in Sources */,
-				3B90B8DF2038D8BD00396508 /* WordSetSelector.swift in Sources */,
+				3B90B8DF2038D8BD00396508 /* WordSetSelectorBrain.swift in Sources */,
 				3B90B90A203F3D4400396508 /* MenuPopupViewController.swift in Sources */,
 				3B90B8DC2038D67D00396508 /* WordSetViewController.swift in Sources */,
 				3F242EA7204CC75B001E669F /* PoemBrain.swift in Sources */,
 				3B820F5A204BF8E7002CA4BF /* UILabelExtension.swift in Sources */,
 				3B90B8CA2038D33D00396508 /* ViewController.swift in Sources */,
 				3B90B8C82038D33D00396508 /* AppDelegate.swift in Sources */,
-				3F242EA5204CBB4A001E669F /* PoemDefaults.swift in Sources */,
-				3F242EA2204CA3EE001E669F /* WordSetSelectorDefault.swift in Sources */,
+				3F242EA5204CBB4A001E669F /* PoemModel.swift in Sources */,
+				3F242EA2204CA3EE001E669F /* WordSetSelectorModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -343,6 +343,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 7S66RXY872;
 				INFOPLIST_FILE = MagneticPoetry/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.spark.MagneticPoetry;
@@ -357,6 +358,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 7S66RXY872;
 				INFOPLIST_FILE = MagneticPoetry/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.spark.MagneticPoetry;
